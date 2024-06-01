@@ -62,7 +62,13 @@ export default function Home() {
           <button onClick={logout}>Logout</button>
           <Link href="/profile">Profile</Link>
         </div>
-        : <Link href="/login">Login</Link> 
+        : (
+          <>
+          <Link href="/login">Login</Link> 
+          <br />
+          <Link href="/register">Signin</Link>
+          </>
+      )
       }
       <h2>Liste des utilisateurs</h2>
       { users ? 
