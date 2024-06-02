@@ -1,20 +1,18 @@
+'use client'
 import Link from "next/link";
-import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router"
 
-export default function User() {
-    const router = useRouter();
-    const param = router.query;
-
+export default function User({ params }) {
     const [ user, setUser ] = useState(null);
     const [ loading, setLoading ] = useState(false);
     const [ error, setError ] = useState(false);
 
     useEffect(() => {
-        if(param.id) {
+        if(params.id) {
             setLoading(true);
 
-            fetch(`/api/users/${param.id}`)
+            fetch(`/api/users/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 setUser(data);
@@ -26,7 +24,7 @@ export default function User() {
             }) 
             
         }
-    }, [param.id])
+    }, [params.id])
 
     return (
         <main>

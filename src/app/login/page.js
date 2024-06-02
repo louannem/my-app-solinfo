@@ -11,7 +11,6 @@ export default function Login () {
     const dispatch = useDispatch();
     const store = useStore();
 
-    const [ loading, setLoading ] = useState(false);
     const [ user, setUser ] = useState({
         email: null,
         password: null,

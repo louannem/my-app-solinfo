@@ -10,8 +10,6 @@ export default function Home() {
   const auth = useAppSelector((state) => state.auth.authState);
   const user = useAppSelector((state) => state.user);
   
-  const dispatch = useDispatch();
-
   const [ isAuth, setIsAuth ] = useState(auth);
 
   // Etat users, modifié par setUsers
@@ -19,14 +17,8 @@ export default function Home() {
   const [ chatrooms, setChatrooms ] = useState(null);
 
 
-  const logout = () => {
-    fetch('/api/logout');
-    dispatch(setAuthState(false));
-  };
-
   useEffect(() => { 
     setIsAuth(auth);
-    console.log(auth)
   }, [auth]);
 
   useEffect(() => {
@@ -54,16 +46,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Homepage</h1>
-      {
-        isAuth === true ? 
-        <div>
-          <p>Welcome {user.firstname} !</p> 
-          <button onClick={logout}>Logout</button>
-          <Link href="/profile">Profile</Link>
-        </div>
-        : <Link href="/login">Login</Link> 
-      }
+      {isAuth && <p>Welcome {user.firstname} !</p> }
       <h2>Liste des utilisateurs</h2>
       { users ? 
         <ol>

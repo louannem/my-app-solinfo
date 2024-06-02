@@ -1,13 +1,9 @@
 'use client'
 import { useAppSelector } from "@/lib/store";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react"
-import { useStore } from "react-redux";
 
 export default function Profile() {
     const user = useAppSelector((state) => state.user);
-    const isAuth = useAppSelector(state => state.auth.authState);
 
     // useLayoutEffect(() => {
     //     if(!isAuth){

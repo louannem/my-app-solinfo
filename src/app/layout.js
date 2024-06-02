@@ -1,5 +1,8 @@
 import StoreProvider from "./StoreProvider";
 import { headers } from "next/headers";
+import "./globals.css";
+import Template from "./template";
+import UserProvider from "@/providers/user";
 
 
 export const metadata = {
@@ -18,8 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
         <body>
-          <StoreProvider data={user}>
-            {children}
+          <StoreProvider data={user}>              
+            <UserProvider data={user}>
+                {children}
+            </UserProvider>
           </StoreProvider>
         </body>
       </html>
