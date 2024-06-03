@@ -14,8 +14,14 @@ export default async function middleware(req) {
   const isPublicRoute = publicRoutes.includes(path)
   
   // Decrypt the session from the cookie
-  const cookie = cookies().get('session')?.value;
-  const session = await decrypt(cookie);
+  let cookie;
+  let session;
+
+  cookie = cookies().get('session')?.value;
+
+  if(cookie) {
+    session = await decrypt(JSON.parse(cookie).session);
+  }
 
   
  

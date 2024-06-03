@@ -1,9 +1,9 @@
 'use client'
-import { setAuthState } from "@/lib/features/auth";
+import UserCard from "@/components/user-card";
 import { useAppSelector } from "@/lib/store";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import style from "@/style/home.module.css";
+import UiLink from "@/components/ui-link";
 
 
 export default function Home() {
@@ -42,19 +42,29 @@ export default function Home() {
       console.error(e)
     })
   }, [])
+
+  const profileLink = {
+    label: 'Profile',
+    url: '/profile',
+  }
   
 
   return (
     <main>
-      {isAuth && <p>Welcome {user.firstname} !</p> }
+      {isAuth && 
+        <div className={style.home_greeting}> 
+          <h2>Welcome {user.firstname} !</h2> 
+          <UiLink {...profileLink} />
+        </div>
+      }
       <h2>Liste des utilisateurs</h2>
       { users ? 
-        <ol>
+        <ol className={style.home_userList}>
         {
           users.map((user) => {
             return ( 
               <li key={`user-${user._id}`}>
-                <Link href={`/user/${user._id}`}>{user.firstname} {user.lastname} </Link>
+                <UserCard {...user} />
               </li>
             )
           })        

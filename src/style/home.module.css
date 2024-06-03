@@ -12,3 +12,17 @@
 .page_title {
     margin: 0;
 }
+
+.home_userList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home_greeting {
+    align-items: center;
+    display: flex;
+}
+
+.home_greeting h2 {
+    margin-right: 20px;
+}

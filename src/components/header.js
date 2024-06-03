@@ -3,20 +3,36 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import style from "../style/home.module.css";
 import Link from "next/link";
+import { setAuthState } from "@/lib/features/auth";
+import UiLink from "./ui-link";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
     const dispatch = useDispatch();
+    const router = useRouter();
+
     const auth = useAppSelector((state) => state.auth.authState);
     const [ isAuth, setIsAuth ] = useState(auth);
 
   const logout = () => {
     fetch('/api/logout');
     dispatch(setAuthState(false));
+    router.push('/');
   };
 
   useEffect(() => { 
     setIsAuth(auth);
   }, [auth]);
+
+  const profileLink = {
+    label: 'Profile',
+    url: '/profile'
+  };
+  
+  const loginLink = {
+    label: 'Login',
+    url: '/login'
+  };
 
     return (        
         <div className={style.navigation} >
@@ -26,9 +42,9 @@ export default function Header() {
                 isAuth === true ? 
                 <>
                     <button onClick={logout}>Logout</button>
-                    <Link href="/profile">Profile</Link>
+                    <UiLink {...profileLink}  />
                 </>
-                : <Link href="/login">Login</Link> 
+                : <UiLink {...loginLink} />
                 }
             </div>
         </div>

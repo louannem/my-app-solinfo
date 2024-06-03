@@ -38,9 +38,9 @@ export default async (req, res) => {
                 const id = (user._id).toString();
                 const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
                 const session = await encrypt({ id, expiresAt });
-                console.log(session)
 
-                const cookies = `session=${session}; value=${session}; httpOnly=false;expires=${expiresAt.toUTCString()};path=/` 
+                // const cookies = `session=${session}; httpOnly=false;expires=${expiresAt.toUTCString()};path=/` 
+                const cookies = `session=` + JSON.stringify({session: session, type: 'user'}) + `; httpOnly=false;expires=${expiresAt.toUTCString()};path=/`;
 
                 res.setHeader("Set-Cookie", cookies);
 

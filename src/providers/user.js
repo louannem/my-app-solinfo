@@ -14,7 +14,7 @@ export default function UserProvider({children, data}){
     const user = JSON.parse(data.value);
 
     useEffect(() => {
-        if(user._id) {
+        if(user && user._id) {
             dispatch(setAuthState(true));
             dispatch(
                 setUserState({

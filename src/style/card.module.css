@@ -1,0 +1,20 @@
+.cardWrapper {
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;  display: flex;
+    box-sizing: border-box;
+    height: 200px;
+    justify-content: center;
+    padding: 16px;
+    width: 200px;
+}
+
+.cardWrapper:hover {  
+    box-shadow: 0 0 5px 2px lightgray;
+}
+
+.cardWrapper h3 {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
