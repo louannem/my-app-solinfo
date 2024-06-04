@@ -14,8 +14,9 @@
 }
 
 .home_userList {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 10px 0 20px;
 }
 
 .home_greeting {
@@ -25,4 +26,8 @@
 
 .home_greeting h2 {
     margin-right: 20px;
+}
+
+.homeSection {
+    margin: 20px 0 50px;
 }

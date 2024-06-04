@@ -57,35 +57,41 @@ export default function Home() {
           <UiLink {...profileLink} />
         </div>
       }
-      <h2>Liste des utilisateurs</h2>
-      { users ? 
-        <ol className={style.home_userList}>
-        {
-          users.map((user) => {
-            return ( 
-              <li key={`user-${user._id}`}>
-                <UserCard {...user} />
-              </li>
-            )
-          })        
-        }
-        </ol>
-      : null
-      }
 
-      <h2>Liste des conversations</h2>
-      { chatrooms ? 
-        <ol>
-        {
-          chatrooms.map((room) => (
-            <li key={`room-${room._id}`}>
-              {room.name} 
-            </li>
-          ))
+      <section className={style.homeSection}>
+        <h2>Liste des utilisateurs</h2>
+        { users ? 
+          <ol className={style.home_userList}>
+          {
+            users.map((user) => {
+              return ( 
+                <li key={`user-${user._id}`}>
+                  <UserCard {...user} />
+                </li>
+              )
+            })        
+          }
+          </ol>
+        : null
         }
-        </ol>
-      : null
-      }
+      </section>
+
+      <section className={style.homeSection}>
+        <h2>Liste des conversations</h2>
+        { chatrooms ? 
+          <ol>
+          {
+            chatrooms.map((room) => (
+              <li key={`room-${room._id}`}>
+                {room.name} 
+              </li>
+            ))
+          }
+          </ol>
+        : null
+        }
+      </section>
+
           
     </main>
   );

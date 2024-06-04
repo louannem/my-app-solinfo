@@ -1,8 +1,22 @@
 .uiLink {
-    background-color: lightgrey;
-    border-radius: 4px;
     color: black;
     cursor: pointer;
-    padding: 4px;
+    font-size: 13px;
+    min-height: 40px;
     text-decoration: none;
+}
+
+.uiLinkDefault {
+    background-color: lightgrey;
+    border-radius: 4px;
+    padding: 6px 8px;
+}
+
+.uiLinkDefault:hover {
+    background-color: #c7c7c7;
+    transition: 0.5s;
+}
+
+.uiLinkSecondary {
+    background-color: transparent;
 }

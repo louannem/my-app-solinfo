@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router"
+import UiLink from "@/components/ui-link";
 
 export default function User({ params }) {
     const [ user, setUser ] = useState(null);
@@ -24,7 +25,14 @@ export default function User({ params }) {
             }) 
             
         }
-    }, [params.id])
+    }, [params.id]);
+
+
+    const homeLink = {
+        label: 'Home',
+        url: '/',
+        type: 'secondary'
+    }
 
     return (
         <main>
@@ -42,7 +50,7 @@ export default function User({ params }) {
                 : "User unknown" 
             }
             
-            <Link href="/">Home</Link>
+            <UiLink {...homeLink} />
            
         </main>
     )
