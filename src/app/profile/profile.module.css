@@ -1,0 +1,28 @@
+.profile h3 {
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.profileDescription {
+    margin: 20px 0;
+}
+
+.profileDescription div {
+    display: flex;
+}
+
+.profileDescription p {
+    border: 2px solid lightgrey;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 5px;
+    width: 400px;
+}
+
+.profileDescription button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}

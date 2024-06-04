@@ -5,9 +5,9 @@ import style from "../style/home.module.css";
 import { setAuthState } from "@/lib/features/auth";
 import UiLink from "./ui-link";
 import { useRouter } from "next/navigation";
-import FontAwesome from "react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -43,10 +43,14 @@ export default function Header() {
             <div className={style.navigation_actions}>
             {
                 isAuth === true ? 
-                <>
-                    <FontAwesomeIcon icon={faArrowRightFromBracket} onClick={logout} />
-                    <UiLink {...profileLink}  />
-                </>
+                <div className={style.navigationActions} >
+                    <FontAwesomeIcon 
+                      icon={faArrowRightFromBracket} 
+                      onClick={logout} 
+                      style={{ cursor: 'pointer' }}
+                    />
+                    <UiLink {...profileLink}/>
+                </div>
                 : <UiLink {...loginLink} />
                 }
             </div>

@@ -18,9 +18,11 @@ export default function UserProvider({children, data}){
             dispatch(setAuthState(true));
             dispatch(
                 setUserState({
-                lastname: user.lastname,
-                firstname: user.firstname,
-                email: user.email
+                    id: user._id,
+                    lastname: user.lastname,
+                    firstname: user.firstname,
+                    email: user.email,
+                    description: user.description ?? ''
                 })
             );
         }

@@ -3,14 +3,13 @@ import { setAuthState } from "@/lib/features/auth";
 import { setUserState } from "@/lib/features/user";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "@/app/login/login.module.css";
 import UiLink from "@/components/ui-link";
 
 export default function Login () {
     const router = useRouter();
     const dispatch = useDispatch();
-    const store = useStore();
 
     const [ user, setUser ] = useState({
         email: null,
@@ -33,9 +32,10 @@ export default function Login () {
                     dispatch(setAuthState(true));
                     dispatch(
                         setUserState({
-                        lastname: data.user.lastname,
-                        firstname: data.user.firstname,
-                        email: data.user.email
+                            id: data.user_id,
+                            lastname: data.user.lastname,
+                            firstname: data.user.firstname,
+                            email: data.user.email
                         })
                     );
 
@@ -51,7 +51,8 @@ export default function Login () {
 
     const homeLink = {
         label: 'Home',
-        url: '/'
+        url: '/',
+        type: 'secondary'
     };
 
     return (

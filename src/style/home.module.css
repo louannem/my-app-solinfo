@@ -8,6 +8,11 @@
     position: relative;
 } 
 
+.navigationActions a {
+    margin-left: 15px;
+}
+
+
 
 .page_title {
     margin: 0;

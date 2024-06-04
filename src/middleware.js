@@ -38,6 +38,7 @@ export default async function middleware(req) {
       return NextResponse.json({
         code: 200,
         data: {
+          id: data._id,
           lastname: data.lastname,
           firstname: data.firstname,
           email: data.email
