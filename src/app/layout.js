@@ -1,9 +1,7 @@
 import StoreProvider from "./StoreProvider";
 import { headers } from "next/headers";
 import "./globals.css";
-import Template from "./template";
 import UserProvider from "@/providers/user";
-
 
 export const metadata = {
   title: 'Next.js',
@@ -11,8 +9,13 @@ export const metadata = {
 }
 async function getData() {
   const userId = headers().get('x-user-id');
-  const res = await fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${userId}`);
-  return res.json();
+  
+  if(userId !== undefined) {
+    const res = await fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${userId ?? 123456}`);
+    return res.json();
+  } else {
+    return {};
+  }
 }
 
 

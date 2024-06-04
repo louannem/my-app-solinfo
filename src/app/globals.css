@@ -33,7 +33,8 @@ body {
 
 main {
   box-sizing: border-box;
-  padding: 0 3vw;
+  padding: 20px 3vw;
+  min-height: 100vw;
 }
 
 a {

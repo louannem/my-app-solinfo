@@ -1,5 +1,5 @@
 
-import { SignJWT, jwtDecrypt } from "jose";
+import { SignJWT } from "jose";
 import clientPromise from "../../../database/db";
 import bycrypt from "bcrypt";
 

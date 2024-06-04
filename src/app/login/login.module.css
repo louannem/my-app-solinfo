@@ -1,0 +1,19 @@
+.login {
+    background-color: #f7f7f7;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+}
+
+.login form label {
+    font-size: 12px;
+}
+
+.login form button {
+    margin: auto;
+    width: fit-content;
+}

@@ -1,10 +1,11 @@
 'use client'
 import { setAuthState } from "@/lib/features/auth";
 import { setUserState } from "@/lib/features/user";
-import { makeStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
+import style from "@/app/login/login.module.css";
+import UiLink from "@/components/ui-link";
 
 export default function Login () {
     const router = useRouter();
@@ -48,8 +49,13 @@ export default function Login () {
         }
     }
 
+    const homeLink = {
+        label: 'Home',
+        url: '/'
+    };
+
     return (
-        <div>
+        <main className={style.login}>
             <h1>Login</h1>
             <form>
                 <label htmlFor="email">Email </label>
@@ -70,6 +76,8 @@ export default function Login () {
 
                 <button onClick={(e) => submitLogin(e)}>Submit</button>
             </form>
-        </div>
+
+            <UiLink {...homeLink} />
+        </main>
     )
 }
