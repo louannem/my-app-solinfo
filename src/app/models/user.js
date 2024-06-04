@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
        type: String,
        required: [true, "Please provide a password"],
     },
+    description: {
+        type: String,
+        required: false
+    },
+    session: {
+        type: String,
+        required: false
+    }
 })
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);
