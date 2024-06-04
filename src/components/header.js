@@ -2,10 +2,10 @@ import { useAppSelector } from "@/lib/store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import style from "../style/home.module.css";
-import Link from "next/link";
 import { setAuthState } from "@/lib/features/auth";
 import UiLink from "./ui-link";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export default function Header() {
 
     return (        
         <div className={style.navigation} >
-            <h1 className={style.page_title}>Homepage</h1>
+            <Link href="/"><img height={40} width={55} /></Link>
             <div className={style.navigation_actions}>
             {
                 isAuth === true ? 
