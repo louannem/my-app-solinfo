@@ -1,7 +1,5 @@
 'use client'
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router"
 import UiLink from "@/components/ui-link";
 
 export default function User({ params }) {

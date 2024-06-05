@@ -40,7 +40,7 @@ export default async (req, res) => {
                 const session = await encrypt({ id, expiresAt });
 
                 // const cookies = `session=${session}; httpOnly=false;expires=${expiresAt.toUTCString()};path=/` 
-                const cookies = `session=` + JSON.stringify({session: session, type: 'user'}) + `; httpOnly=false;expires=${expiresAt.toUTCString()};path=/`;
+                const cookies = `userId= ${id}; expires=${expiresAt.toUTCString()};path=/`;
 
                 res.setHeader("Set-Cookie", cookies);
 

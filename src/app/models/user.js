@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema({
         required: false
     },
     session: {
-        type: String,
+        type: {
+            id: String,
+            createdAt: Date,
+            expiresAt: Date,
+        },
         required: false
     }
 })

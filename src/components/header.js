@@ -5,11 +5,13 @@ import style from "../style/home.module.css";
 import { setAuthState } from "@/lib/features/auth";
 import UiLink from "./ui-link";
 import { useRouter } from "next/navigation";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { setUserState } from "@/lib/features/user";
 
 export default function Header() {
+    const user = useAppSelector((state) => state.user);
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -17,20 +19,42 @@ export default function Header() {
     const [ isAuth, setIsAuth ] = useState(auth);
 
   const logout = () => {
-    fetch('/api/logout');
-    dispatch(setAuthState(false));
-    router.refresh();
-    router.push('/');
+    fetch('/api/logout/'+user.id)
+    .then((res) => res.json())
+    .then(() => {
+      let cookieName = "userId=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+    
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+    
+          if (c.indexOf(cookieName) === 0) {
+            document.cookie = cookieName
+          }
+        }
+      }
+
+      dispatch(setAuthState(false));
+
+      dispatch(setUserState({
+        id: null,
+        firstname: null,
+        lastname: null,
+        email: null
+      }))
+
+      window.location.href = '/';
+    });
+
   };
 
   useEffect(() => { 
     setIsAuth(auth);
   }, [auth]);
-
-  const profileLink = {
-    label: 'Profile',
-    url: '/profile'
-  };
   
   const loginLink = {
     label: 'Login',
@@ -49,7 +73,9 @@ export default function Header() {
                       onClick={logout} 
                       style={{ cursor: 'pointer' }}
                     />
-                    <UiLink {...profileLink}/>
+                    <Link href='/profile'>
+                      <FontAwesomeIcon icon={faUser} color="black" />
+                    </Link>
                 </div>
                 : <UiLink {...loginLink} />
                 }
