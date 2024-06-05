@@ -1,0 +1,48 @@
+.userPage {
+    margin: 0;
+    padding: 0;
+}
+
+.userPageHeader {
+    background-color: rgb(231, 231, 231);
+    height: 200px;
+    position: relative;
+    width: 100vw;
+}
+
+.userPageInfos {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    top: 90%;
+    width: fit-content;
+}
+
+.userPageInfos h1 {
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    font-size: 20px;
+    padding: 8px 16px;
+    width: fit-content;
+}
+
+.userPageInfos span {
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.userPageDescription {
+    color: grey;
+    margin: 50px auto;
+    max-width: 200px;
+    width: fit-content;
+}
+
+.userPageContent {
+    margin: 0 2rem;
+}

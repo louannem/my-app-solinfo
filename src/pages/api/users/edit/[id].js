@@ -7,8 +7,6 @@ export default async (req, res) => {
     const id =   new ObjectId(param.id);
     const body = req.body;
 
-    console.log(body)
-
     try {
         const client = await clientPromise;
         const db = client.db();
