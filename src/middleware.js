@@ -17,25 +17,27 @@ export default async function middleware(req) {
   let isActiveSession;
 
   cookie = cookies().get('userId')?.value;
- 
+  
   if(cookie) {
     fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${cookie}`)
     .then(res => res.json())
     .then(data => {
-      isActiveSession = data.session.expiresAt > data.session.createdAt && data.session.id !== null;
+      isActiveSession = data.session.id !== null;
       
       // 5. Redirect to /login if the user is not authenticated
-      if (isProtectedRoute && isActiveSession === false) {
-        console.log('user moving', isProtectedRoute, isActiveSession)
-        return NextResponse.redirect(new URL('/login', req.nextUrl))
-      }
+      // if (isProtectedRoute && isActiveSession === false) {
+      //   console.log('user moving', isProtectedRoute, isActiveSession)
+      //   return NextResponse.redirect(new URL('/login', req.nextUrl))
+      // }
 
-      return NextResponse.redirect(new URL('/login', req.nextUrl))
+      // return NextResponse.redirect(new URL('/login', req.nextUrl))
     });
 
+  } else {
+    if (isProtectedRoute) {
+      return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
   }
-
-  
 
  
   // // 6. Redirect to /dashboard if the user is authenticated
