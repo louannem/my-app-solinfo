@@ -4,10 +4,6 @@
     font-weight: 400;
 }
 
-.profileDescription {
-    margin: 20px 0;
-}
-
 .profileDescription div {
     display: flex;
 }
@@ -26,9 +22,31 @@
     width: 500px;
 }
 
+.profileDescription textarea {
+    height: 100px;
+    width: 500px;
+}
+
 .profileDescription button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.profileSettingsBlock {
+    border-bottom: 2px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* margin: 20px 0; */
+    padding: 20px  0;
+}
+
+.profileSettingsBlock label {
+    margin: 5px 0;
+}
+
+.profileSettingsBlock input {
     margin-left: 10px;
 }
