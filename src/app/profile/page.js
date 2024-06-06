@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import style from "./profile.module.css";
+import Button from "@/components/button";
 
 export default function Profile() {
     const user = useAppSelector((state) => state.user);
@@ -18,6 +19,7 @@ export default function Profile() {
     const [newProfile, setNewProfile] = useState(user);
 
     const [isSuccess, setIsSuccess] = useState(false);
+
 
     useEffect(() => {
         setProfile(user);
@@ -49,35 +51,11 @@ export default function Profile() {
         })
     }
 
-    const updateDescription = () => {
-        setIsEditing(false);
-        dispatch(
-            setUserState({
-                ...user,
-                desciption: newDescription,
-            })
-        );
-        
-        setProfile({
-            ...user,
-            description: newDescription
-        });
-
-        fetch(`/api/users/edit/${user.id}`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            body: JSON.stringify({
-                ...profile,
-                description: newDescription
-            })
-        }).then((res) => res.json())
-        .then(() => {
-            setIsSuccess(true)
-        })
+    const saveButton = {
+        label: 'Save',
+        handleClick: updateProfile
     }
+   
 
     useEffect(() => {
         if(isSuccess) {
@@ -124,18 +102,14 @@ export default function Profile() {
             <div className={[style.profileDescription, style.profileSettingsBlock].join(' ')}>
                 <span>Description:</span>
                 
-                
                 <textarea 
                     // type="text" 
                     onChange={(e) => setNewDescription(e.target.value)} 
                     value={newProfile.description}
                 />
-                            
-
-                
-
             </div>
-            <button onClick={updateProfile} >Save</button>
+
+            <Button {...saveButton} />
             
             {isSuccess ?
                 <div>Updated successfully !</div>
