@@ -1,24 +1,25 @@
 'use client'
 import { setUserState } from "@/lib/features/user";
 import { useAppSelector } from "@/lib/store";
-import { faPen, faSave } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import style from "./profile.module.css";
 import Button from "@/components/button";
+import MessageBox from "@/components/message-box";
 
 export default function Profile() {
     const user = useAppSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const [profile, setProfile] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [newDescription, setNewDescription] = useState(user.description);
     const [newProfile, setNewProfile] = useState(user);
 
     const [isSuccess, setIsSuccess] = useState(false);
+
+    const successConfirmation = {
+        message: 'Edited successfully !',
+        type: 'success'
+    }
 
 
     useEffect(() => {
@@ -67,8 +68,21 @@ export default function Profile() {
 
     return (profile) ? (
         <main className={style.profile}>
-            <h1>Profile</h1>
-            <h3>@{profile.id}</h3>
+            <div className={style.profileHeader}>
+                <div>
+                    <h1>Profile</h1>
+                    <h3>@{profile.id}</h3>
+                </div>
+
+                            
+                {isSuccess ?
+                    <div className={style.profilePopinBox}>
+                        <MessageBox {...successConfirmation} />
+                    </div>
+                    : null
+                }
+
+            </div>
 
             <div className={style.profileSettingsBlock}>
                 <label>
@@ -104,17 +118,12 @@ export default function Profile() {
                 
                 <textarea 
                     // type="text" 
-                    onChange={(e) => setNewDescription(e.target.value)} 
+                    onChange={(e) =>  setNewProfile({...newProfile, description: e.target.value})} 
                     value={newProfile.description}
                 />
             </div>
 
             <Button {...saveButton} />
-            
-            {isSuccess ?
-                <div>Updated successfully !</div>
-                : null
-            }
 
         </main>
     ) : <p>Chargement...</p>

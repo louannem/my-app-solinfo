@@ -1,0 +1,14 @@
+.messageBox {
+    border-radius: 8px;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    padding: 8px 16px;
+    width: fit-content;
+}
+
+.messageBoxDefault {
+    background-color: rgb(234, 234, 234);
+}
+
+.messageBoxSuccess {
+    background-color: rgb(231, 249, 193);
+}

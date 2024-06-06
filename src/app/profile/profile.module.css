@@ -1,3 +1,9 @@
+.profileHeader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
 .profile h3 {
     color: lightgrey;
     font-size: 12px;
@@ -39,3 +45,7 @@
 .profileSettingsBlock input {
     margin-left: 10px;
 }
+
+/* .profilePopinBox {
+    position: absolute;
+} */
