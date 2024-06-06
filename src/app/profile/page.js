@@ -68,7 +68,7 @@ export default function Profile() {
                             </button>
                         </div>
                     : 
-                        <div>
+                        <div className={style.profileDescriptionInput}>
                             {
                                 profile.description !== '' &&  profile.description !== null ? 
                                     <p>{profile.description}</p>
