@@ -55,22 +55,40 @@ export default function User({ params }) {
                             <span>@{user._id}</span>
                         </div>
                     </div>
-                    <div className={style.userPageDescription}>{user.description}</div> 
+                    <div className={style.userPageData}>
+                        <div className={style.userPageDescription}>
+                            {user.description}
+                        </div> 
 
-                    {activeUser.id === user._id ? 
-                        <Link href={'/profile'}>
-                            Edit your profile
-                            <FontAwesomeIcon icon={faPen} />
-                        </Link> 
-                        : null
-                    }                   
+                        {activeUser.id === user._id ? 
+                                <div className={style.userPageOwnerActions}>
+                                    <Link href={'/profile'}>
+                                        Edit your profile
+                                        <FontAwesomeIcon icon={faPen} />
+                                    </Link> 
+                                </div>
+                            : null
+                        }                   
+                    </div>
+                    <section className={style.userPageContent}>
+                        {activeUser.id === user._id ? 
+                            <div className={style.userPagePostInput}>
+                                <textarea placeholder="Write a post !" />
+                                <button>Submit</button>
+                            </div>
+
+                            : null
+                        }
+                    </section>
                 </div>
-                : "User unknown" 
+                : (
+                    <div>
+                        <p>User unknown</p> 
+                        <UiLink {...homeLink} />
+                    </div>
+                )
             }
 
-            <section className={style.userPageContent}>
-                <UiLink {...homeLink} />
-            </section>
             
            
         </main>

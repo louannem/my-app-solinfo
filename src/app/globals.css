@@ -34,7 +34,7 @@ body {
 
 main {
   box-sizing: border-box;
-  padding: 20px 3vw;
+  padding: 20px 3vw 20px;
   /* min-height: 100vw; */
 }
 
@@ -45,4 +45,16 @@ a {
 
 ul, ul li, ol, ol li {
   list-style: none;
+}
+
+
+input, textarea {
+  border: 1px lightgrey solid;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+
+input:focus-visible, textarea:focus-visible {
+  border: grey 1px solid;
+  outline: none;
 }
