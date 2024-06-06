@@ -34,18 +34,21 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    /* margin: 20px 0; */
     padding: 20px  0;
 }
 
+.profileSettingsInput {
+    display: flex;
+    margin: 10px 0 10px;
+}
+
 .profileSettingsBlock label {
+    color: grey;
+    font-size: 14px;
     margin: 5px 0;
+    width: 100px;
 }
 
 .profileSettingsBlock input {
     margin-left: 10px;
 }
-
-/* .profilePopinBox {
-    position: absolute;
-} */

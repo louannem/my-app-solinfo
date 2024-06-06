@@ -70,7 +70,7 @@ export default function Profile() {
         <main className={style.profile}>
             <div className={style.profileHeader}>
                 <div>
-                    <h1>Profile</h1>
+                    <h1>My account</h1>
                     <h3>@{profile.id}</h3>
                 </div>
 
@@ -85,42 +85,46 @@ export default function Profile() {
             </div>
 
             <div className={style.profileSettingsBlock}>
-                <label>
-                    Firstname
+                <div className={style.profileSettingsInput}>
+                    <label> Firstname</label>
                     <input 
                         value={newProfile.firstname} 
                         onChange={(e) => setNewProfile({...newProfile, firstname: e.target.value})} 
                     />
-                    
-                </label>
-                <label>
-                    Lastname
+                </div>
+
+                <div className={style.profileSettingsInput}>
+                    <label>Lastname</label>
                     <input 
                         value={newProfile.lastname} 
                         onChange={(e) => setNewProfile({...newProfile, lastname: e.target.value})} 
                     />
-                </label>
+                </div>
             </div>
 
             <div className={style.profileSettingsBlock}>
-                <label>
-                    Email
+                <div className={style.profileSettingsInput}>
+                    <label>Email</label>
                     <input 
                         value={newProfile.email} 
                         onChange={(e) => setNewProfile({...newProfile, email: e.target.value})} 
                     />
-                </label>
+                </div>
             </div>
 
 
             <div className={[style.profileDescription, style.profileSettingsBlock].join(' ')}>
-                <span>Description:</span>
                 
-                <textarea 
-                    // type="text" 
-                    onChange={(e) =>  setNewProfile({...newProfile, description: e.target.value})} 
-                    value={newProfile.description}
-                />
+                <div className={style.profileSettingsInput}>
+                    <label>Description</label>
+                    
+                    <textarea 
+                        // type="text" 
+                        onChange={(e) =>  setNewProfile({...newProfile, description: e.target.value})} 
+                        value={newProfile.description}
+                    />
+                    
+                </div>
             </div>
 
             <Button {...saveButton} />
