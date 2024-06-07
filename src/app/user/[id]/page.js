@@ -6,6 +6,7 @@ import { useAppSelector } from "@/lib/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Button from "@/components/button";
 
 export default function User({ params }) {
     const activeUser = useAppSelector((state) => state.user);
@@ -36,6 +37,17 @@ export default function User({ params }) {
     const homeLink = {
         label: 'Home',
         url: '/',
+        type: 'transparent'
+    }
+
+    const submitButton = { 
+        label: 'Submit',
+        handleClick: () => {}
+    }
+
+    const profileLink = { 
+        label: 'Edit your profile',
+        url: '/profile',
         type: 'secondary'
     }
 
@@ -62,10 +74,7 @@ export default function User({ params }) {
 
                         {activeUser.id === user._id ? 
                                 <div className={style.userPageOwnerActions}>
-                                    <Link href={'/profile'}>
-                                        Edit your profile
-                                        <FontAwesomeIcon icon={faPen} />
-                                    </Link> 
+                                    <UiLink {...profileLink} />
                                 </div>
                             : null
                         }                   
@@ -74,7 +83,7 @@ export default function User({ params }) {
                         {activeUser.id === user._id ? 
                             <div className={style.userPagePostInput}>
                                 <textarea placeholder="Write a post !" />
-                                <button>Submit</button>
+                                <Button {...submitButton} />
                             </div>
 
                             : null

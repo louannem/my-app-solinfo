@@ -55,6 +55,12 @@ export default function Login () {
         type: 'secondary'
     };
 
+    const registerLink = {
+        label: 'Signin now !',
+        url: '/register',
+        type: 'transparent'
+    }
+
     return (
         <main className={style.login}>
             <h1>Login</h1>
@@ -77,6 +83,10 @@ export default function Login () {
 
                 <button onClick={(e) => submitLogin(e)}>Submit</button>
             </form>
+
+            <div style={{ margin: 'auto', width: 'fit-content' }}>
+                <p>Not registered ? <UiLink {...registerLink} /></p>
+            </div>
 
             <UiLink {...homeLink} />
         </main>

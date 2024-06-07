@@ -17,5 +17,14 @@
 }
 
 .uiLinkSecondary {
-    background-color: transparent;
+    background-color: white;
+    border: 2px solid #c7c7c7;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.uiLinkSecondary:hover {
+    background-color: #efefef;
+    border: 2px solid #efefef;
+    transition: 0.2s
 }

@@ -11,7 +11,7 @@
 }
 
 .cardWrapper:hover {  
-    box-shadow: 0 0 5px 2px lightgray;
+    box-shadow: 0px 2px 2px 0 #dcd7f3, 0px 2px 3px 2px #ffe0eb, 2px 3px 3px 3px #ffeff5;
     transition: 0.5s;
 }
 
