@@ -24,7 +24,19 @@
 }
 
 .uiLinkSecondary:hover {
-    background-color: #efefef;
-    border: 2px solid #efefef;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    border: 2px solid transparent;
+    color: white;
     transition: 0.2s
+}
+
+.uiLinkHeader {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.uiLinkHeader:hover {
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    transition: 0.2s;
 }

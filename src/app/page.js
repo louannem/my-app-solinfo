@@ -46,6 +46,7 @@ export default function Home() {
   const profileLink = {
     label: 'Profile',
     url: '/profile',
+    type: 'header'
   }
   
 
@@ -53,7 +54,13 @@ export default function Home() {
     <main>
       {isAuth && 
         <div className={style.home_greeting}> 
-          <h2>Welcome {user.firstname} !</h2> 
+          <img />
+          <div className={style.home_greeting_text}>
+            <h2>Welcome {user.firstname} !</h2> 
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Eu neque vestibulum commodo tellus.
+            </p>
+          </div>
           <UiLink {...profileLink} />
         </div>
       }

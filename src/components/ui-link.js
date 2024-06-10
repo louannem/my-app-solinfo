@@ -8,6 +8,8 @@ export default function UiLink(data) {
                 return style.uiLinkDefault;
             } else if(data.type === 'secondary') {
                 return style.uiLinkSecondary;
+            } else if(data.type === 'header') {
+                return style.uiLinkHeader;
             }
         } else {
             return style.uiLinkDefault;

@@ -23,13 +23,56 @@
     margin: 10px 0 20px;
 }
 
-.home_greeting {
-    align-items: center;
-    display: flex;
+.home_userList a, .home_userList h3:hover {
+    color: white;
+    position: inherit;
+    /* width: 80px; */
+    z-index: 1;
 }
 
-.home_greeting h2 {
+.home_userList a {
+    width: 80px;
+}
+
+.home_greeting {
+    align-items: center;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    border-radius: 16px;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    color: white;
+    display: flex;
+    height: 300px;
+    padding: 70px 50px;
+    position: relative;
+    width: 100%;
+}
+
+.home_greeting img {
+    background-color: #ffffff;
+    border-radius: 100px;
+    height: 135px;
+    width: 135px;
+}
+
+.home_greeting_text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.home_greeting_text h2 {
+    font-size: 35px;
     margin-right: 20px;
+}
+
+.home_greeting_text p {
+    font-size: 20px
+}
+
+.home_greeting a {
+    bottom: 20px;
+    position: absolute;
+    right: 50px;
 }
 
 .homeSection {
