@@ -1,5 +1,5 @@
 import Link from "next/link";
-import style from "@/style/card.module.css";
+import style from "@/style/user-card.module.css";
 
 export default function UserCard(user) {
     return (

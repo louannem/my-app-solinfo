@@ -4,10 +4,11 @@ import { useAppSelector } from "@/lib/store";
 import { useEffect, useState } from "react";
 import style from "@/style/home.module.css";
 import UiLink from "@/components/ui-link";
-import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMessage, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import ChatroomCard from "@/components/room-card";
+import Button from "@/components/button";
 
 
 export default function Home() {
@@ -57,8 +58,13 @@ export default function Home() {
       icon: faEnvelope,
       url: '/'
     }
-  ]
+  ];
   
+  const submitButton = { 
+    label: 'Submit',
+    handleClick: () => {}
+  };
+
 
   return (
     <main>
@@ -89,6 +95,15 @@ export default function Home() {
           </div>
         </div>
       }
+
+      
+      <section className={[`${style.homeSection} ${style.homeSection_input}`].join(' ')}>
+        <span>Something new ? <FontAwesomeIcon icon={faMessage}  /></span>
+        <div className={style.homeSection_input_separator}>
+          <textarea placeholder="Write a post !" />
+        </div>
+        <Button {...submitButton} />
+      </section>
 
       <section className={style.homeSection}>
         <h2>Liste des utilisateurs</h2>

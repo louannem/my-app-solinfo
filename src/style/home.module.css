@@ -107,6 +107,32 @@
     margin-bottom: 20px;
 }
 
+.homeSection_input {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+
+.homeSection_input  span {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+.homeSection_input textarea {
+    width: 400px;
+}
+
+.homeSection_input_separator {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    border-radius: 10px 10px 0px 10px;
+    /* height: 10px; */
+    margin-bottom: 20px;
+    padding: 15px;
+    /* width: 400px; */
+}
+
 .homeSection__chatroomsList {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
