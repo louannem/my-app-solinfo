@@ -101,3 +101,14 @@
 .homeSection {
     margin: 20px 0 50px;
 }
+
+.homeSection h2 {
+    border-bottom: rgb(238, 238, 238) 2px solid;
+    margin-bottom: 20px;
+}
+
+.homeSection__chatroomsList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+}

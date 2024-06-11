@@ -87,7 +87,6 @@ export default function Home() {
 
             </ul>
           </div>
-          {/* <UiLink {...profileLink} /> */}
         </div>
       }
 
@@ -112,7 +111,7 @@ export default function Home() {
       <section className={style.homeSection}>
         <h2>Liste des conversations</h2>
         { chatrooms ? 
-          <ol>
+          <ol className={style.homeSection__chatroomsList}>
           {
             chatrooms.map((room) => (
               <li key={`room-${room._id}`}>
