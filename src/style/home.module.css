@@ -69,10 +69,33 @@
     font-size: 20px
 }
 
-.home_greeting a {
+.home_greeting_icons {
     bottom: 20px;
     position: absolute;
     right: 50px;
+}
+
+.home_greeting_icons ul {
+    display: flex;
+}
+
+.home_greeting_icons ul li {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-left: 10px;
+} 
+
+.home_greeting_icons ul li, .home_greeting_icons ul li a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+}
+
+.home_greeting_icons ul li:hover {
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    transition: 0.2s;
 }
 
 .homeSection {

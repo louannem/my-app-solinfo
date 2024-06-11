@@ -4,6 +4,9 @@ import { useAppSelector } from "@/lib/store";
 import { useEffect, useState } from "react";
 import style from "@/style/home.module.css";
 import UiLink from "@/components/ui-link";
+import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -48,6 +51,17 @@ export default function Home() {
     url: '/profile',
     type: 'header'
   }
+
+  const headerIcons = [
+    {
+      icon: faUser,
+      url: '/profile'
+    },
+    {
+      icon: faEnvelope,
+      url: '/'
+    }
+  ]
   
 
   return (
@@ -61,7 +75,23 @@ export default function Home() {
               Lorem ipsum dolor sit amet consectetur. Eu neque vestibulum commodo tellus.
             </p>
           </div>
-          <UiLink {...profileLink} />
+          <div className={style.home_greeting_icons}>
+            <ul>
+              {  
+                headerIcons.map((item) => {
+                  return (
+                    <li>
+                      <Link href={item.url}>
+                        <FontAwesomeIcon icon={item.icon} />
+                      </Link>
+                    </li>
+                  )
+                })
+              }
+
+            </ul>
+          </div>
+          {/* <UiLink {...profileLink} /> */}
         </div>
       }
 
