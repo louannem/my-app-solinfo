@@ -7,6 +7,7 @@ import UiLink from "@/components/ui-link";
 import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import ChatroomCard from "@/components/room-card";
 
 
 export default function Home() {
@@ -46,11 +47,6 @@ export default function Home() {
     })
   }, [])
 
-  const profileLink = {
-    label: 'Profile',
-    url: '/profile',
-    type: 'header'
-  }
 
   const headerIcons = [
     {
@@ -120,7 +116,7 @@ export default function Home() {
           {
             chatrooms.map((room) => (
               <li key={`room-${room._id}`}>
-                {room.name} 
+                <ChatroomCard {...room} />
               </li>
             ))
           }
