@@ -2,7 +2,7 @@ import StoreProvider from "./StoreProvider";
 import { headers } from "next/headers";
 import "./globals.css";
 import UserProvider from "@/providers/user";
-import { Montserrat } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
 export const metadata = {
   title: 'Next.js',
@@ -10,12 +10,11 @@ export const metadata = {
 }
 
 // If loading a variable font, you don't need to specify the font weight
-const roboto = Montserrat({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-})
-
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 async function getData() {
   const userId = headers().get('x-user-id');
@@ -32,7 +31,7 @@ async function getData() {
 export default function RootLayout({ children }) {
   const user = getData();
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en" className={poppins.className}>
         <body>
           <StoreProvider data={user}>              
             <UserProvider data={user}>
