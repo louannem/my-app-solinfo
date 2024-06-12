@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
             expiresAt: Date,
         },
         required: false
+    },
+    posts: {
+        type: Array,
+        required: false
     }
 })
 

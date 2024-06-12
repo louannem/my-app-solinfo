@@ -103,7 +103,7 @@
 }
 
 .homeSection h2 {
-    border-bottom: rgb(238, 238, 238) 2px solid;
+    border-bottom: rgb(234, 234, 234) 2px solid;
     margin-bottom: 20px;
 }
 
@@ -112,6 +112,7 @@
     display: flex;
     flex-direction: column;
     margin: 50px auto;
+    padding: 20px 0;
 }
 
 .homeSection_input  span {

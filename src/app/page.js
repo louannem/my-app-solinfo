@@ -20,9 +20,24 @@ export default function Home() {
   const [ users, setUsers ] = useState(null);
   const [ chatrooms, setChatrooms ] = useState(null);
 
+  const [post, setPost] = useState({
+    content: '',
+    createdAt: new Date(),
+    createdBy: user._id
+   })
+
+   const  [newPost, setNewPost] = useState(null);
+
 
   useEffect(() => { 
     setIsAuth(auth);
+    console.log(user)
+
+    fetch(`/api/users/${user.id}`)
+    .then(res => res.json())
+    .then((data) => {      
+      setNewPost(data.posts[data.posts.length - 1])
+    })
   }, [auth]);
 
   useEffect(() => {
@@ -61,7 +76,20 @@ export default function Home() {
   
   const submitButton = { 
     label: 'Submit',
-    handleClick: () => {}
+    handleClick: () => {
+      fetch(`/api/users/post/${user.id}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        body: JSON.stringify({
+            posts: [post]
+        })
+      })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+    }
   };
 
 
@@ -95,9 +123,12 @@ export default function Home() {
             </div>
           </div>
           <section className={[`${style.homeSection} ${style.homeSection_input}`].join(' ')}>
+            {newPost ? 
+              <div>{newPost.content}</div>
+            : null }
             <span>Something new ? <FontAwesomeIcon icon={faMessage}  /></span>
             <div className={style.homeSection_input_separator}>
-              <textarea placeholder="Write a post !" />
+              <textarea placeholder="Write a post !" onChange={(e) => setPost({...post, content: e.target.value})} />
             </div>
             <Button {...submitButton} />
           </section>

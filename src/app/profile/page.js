@@ -2,7 +2,7 @@
 import { setUserState } from "@/lib/features/user";
 import { useAppSelector } from "@/lib/store";
 import { useEffect, useState } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "./profile.module.css";
 import Button from "@/components/button";
 import MessageBox from "@/components/message-box";
