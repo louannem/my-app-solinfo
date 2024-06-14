@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import UiLink from "@/components/ui-link";
 import style from "./user.module.css";
 import { useAppSelector } from "@/lib/store";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import Button from "@/components/button";
 
 export default function User({ params }) {
@@ -22,6 +19,7 @@ export default function User({ params }) {
             fetch(`/api/users/${params.id}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setUser(data);
                 setLoading(false);
             })
@@ -88,6 +86,20 @@ export default function User({ params }) {
 
                             : null
                         }
+
+                        <section>
+                            {
+                                user.posts ? user.posts.map((post) => {
+                                    return (
+                                        <article>
+                                            <span>{post.createdAt}</span>
+                                            <p>{post.content}</p>
+                                        </article>
+                                    )
+                                })
+                                : <p>{user.fistname} {user.lastname} didn't post anything yet !</p>
+                            }
+                        </section>
                     </section>
                 </div>
                 : (
