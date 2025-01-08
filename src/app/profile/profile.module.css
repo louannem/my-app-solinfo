@@ -1,0 +1,54 @@
+.profileHeader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile h3 {
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.profileDescription div {
+    display: flex;
+}
+
+.profileDescriptionInput {
+    display: flex;
+    align-items: flex-end;
+}
+
+.profileDescription textarea {
+    height: 100px;
+    width: 500px;
+}
+
+.profile button {
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.profileSettingsBlock {
+    border-bottom: 2px solid rgb(240, 240, 240);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 20px  0;
+}
+
+.profileSettingsInput {
+    display: flex;
+    margin: 10px 0 10px;
+}
+
+.profileSettingsBlock label {
+    color: grey;
+    font-size: 14px;
+    margin: 5px 0;
+    width: 100px;
+}
+
+.profileSettingsBlock input {
+    margin-left: 10px;
+}

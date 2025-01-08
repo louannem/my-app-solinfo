@@ -1,0 +1,141 @@
+.navigation {
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 5px 2px lightgray;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    position: relative;
+} 
+
+.navigationActions a {
+    margin-left: 15px;
+}
+
+
+.page_title {
+    margin: 0;
+}
+
+.home_userList {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 10px 0 20px;
+}
+
+.home_userList a, .home_userList h3:hover {
+    color: white;
+    position: inherit;
+    /* width: 80px; */
+    z-index: 1;
+}
+
+.home_userList a {
+    width: 80px;
+}
+
+.home_greeting {
+    align-items: center;
+    background: #6AD0C3;
+    border-radius: 16px;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    color: white;
+    display: flex;
+    height: 300px;
+    padding: 70px 50px;
+    position: relative;
+    width: 100%;
+}
+
+.home_greeting img {
+    background-color: #ffffff;
+    border-radius: 100px;
+    height: 135px;
+    width: 135px;
+}
+
+.home_greeting_text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.home_greeting_text h2 {
+    font-size: 35px;
+    margin-right: 20px;
+}
+
+.home_greeting_text p {
+    font-size: 20px
+}
+
+.home_greeting_icons {
+    bottom: 20px;
+    position: absolute;
+    right: 50px;
+}
+
+.home_greeting_icons ul {
+    display: flex;
+}
+
+.home_greeting_icons ul li {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-left: 10px;
+} 
+
+.home_greeting_icons ul li, .home_greeting_icons ul li a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+}
+
+.home_greeting_icons ul li:hover {
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    transition: 0.2s;
+}
+
+.homeSection {
+    margin: 20px 0 50px;
+}
+
+.homeSection h2 {
+    border-bottom: rgb(234, 234, 234) 2px solid;
+    margin-bottom: 20px;
+}
+
+.homeSection_input {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    padding: 20px 0;
+}
+
+.homeSection_input  span {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+.homeSection_input textarea {
+    width: 400px;
+}
+
+.homeSection_input_separator {
+    background: #6AD0C3;
+    border-radius: 10px 10px 0px 10px;
+    /* height: 10px; */
+    margin-bottom: 20px;
+    padding: 15px;
+    /* width: 400px; */
+}
+
+.homeSection__chatroomsList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+}

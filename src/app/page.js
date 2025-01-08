@@ -1,32 +1,45 @@
 'use client'
-import { setAuthState } from "@/lib/features/auth";
+import UserCard from "@/components/user-card";
 import { useAppSelector } from "@/lib/store";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import style from "@/style/home.module.css";
+import { faEnvelope, faMessage, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import Button from "@/components/button";
+import UiLink from "@/components/ui-link";
 
 
 export default function Home() {
   const auth = useAppSelector((state) => state.auth.authState);
   const user = useAppSelector((state) => state.user);
   
-  const dispatch = useDispatch();
-
   const [ isAuth, setIsAuth ] = useState(auth);
 
   // Etat users, modifié par setUsers
   const [ users, setUsers ] = useState(null);
   const [ chatrooms, setChatrooms ] = useState(null);
 
+  const [post, setPost] = useState({
+    content: '',
+    createdAt: new Date(),
+    createdBy: user._id
+   })
 
-  const logout = () => {
-    fetch('/api/logout');
-    dispatch(setAuthState(false));
-  };
+   const  [newPost, setNewPost] = useState(null);
+
 
   useEffect(() => { 
     setIsAuth(auth);
-    console.log(auth)
+    console.log(user)
+
+		if (user.id) {
+			fetch(`/api/users/${user.id}`)
+			.then(res => res.json())
+			.then((data) => {      
+				setNewPost(data.posts[data.posts.length - 1])
+			})
+		}
   }, [auth]);
 
   useEffect(() => {
@@ -50,56 +63,108 @@ export default function Home() {
       console.error(e)
     })
   }, [])
+
+
+  const headerIcons = [
+    {
+      icon: faUser,
+      url: '/profile'
+    },
+    {
+      icon: faEnvelope,
+      url: '/'
+    }
+  ];
+
+	const loginLink = {
+    label: 'Login',
+    url: '/login'
+  };
   
+  const submitButton = { 
+    label: 'Submit',
+    handleClick: () => {
+      fetch(`/api/users/post/${user.id}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        body: JSON.stringify({
+            posts: [post]
+        })
+      })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+    }
+  };
+
 
   return (
     <main>
-      <h1>Homepage</h1>
-      {
-        isAuth === true ? 
-        <div>
-          <p>Welcome {user.firstname} !</p> 
-          <button onClick={logout}>Logout</button>
-          <Link href="/profile">Profile</Link>
-        </div>
-        : (
-          <>
-          <Link href="/login">Login</Link> 
-          <br />
-          <Link href="/register">Signin</Link>
-          </>
-      )
-      }
-      <h2>Liste des utilisateurs</h2>
-      { users ? 
-        <ol>
-        {
-          users.map((user) => {
-            return ( 
-              <li key={`user-${user._id}`}>
-                <Link href={`/user/${user._id}`}>{user.firstname} {user.lastname} </Link>
-              </li>
-            )
-          })        
-        }
-        </ol>
-      : null
+      {isAuth ? 
+        <>
+          <div className={style.home_greeting}> 
+            <img />
+            <div className={style.home_greeting_text}>
+              <h2>Welcome {user.firstname} !</h2> 
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Eu neque vestibulum commodo tellus.
+              </p>
+            </div>
+            <div className={style.home_greeting_icons}>
+              <ul>
+                {  
+                  headerIcons.map((item, i) => {
+                    return (
+                      <li key={i}>
+                        <Link href={item.url}>
+                          <FontAwesomeIcon icon={item.icon} />
+                        </Link>
+                      </li>
+                    )
+                  })
+                }
+
+              </ul>
+            </div>
+          </div>
+          <section className={[`${style.homeSection} ${style.homeSection_input}`].join(' ')}>
+            {newPost ? 
+              <div>{newPost.content}</div>
+            : null }
+            <span>Something new ? <FontAwesomeIcon icon={faMessage}  /></span>
+            <div className={style.homeSection_input_separator}>
+              <textarea placeholder="Write a post !" onChange={(e) => setPost({...post, content: e.target.value})} />
+            </div>
+            <Button {...submitButton} />
+          </section>
+        </>
+      : 
+      <section>
+        <h1>Welcome !</h1>
+				<p>Log in to explore our app !</p>
+				<UiLink {...loginLink} />
+      </section>
       }
 
-      <h2>Liste des conversations</h2>
-      { chatrooms ? 
-        <ol>
-        {
-          chatrooms.map((room) => (
-            <li key={`room-${room._id}`}>
-              {room.name} 
-            </li>
-          ))
+      <section className={style.homeSection}>
+        <h2>Liste des utilisateurs</h2>
+        { users ? 
+          <ol className={style.home_userList}>
+          {
+            users.map((user) => {
+              return ( 
+                <li key={`user-${user._id}`}>
+                  <UserCard {...user} />
+                </li>
+              )
+            })        
+          }
+          </ol>
+					: null
         }
-        </ol>
-      : null
-      }
-          
+      </section>        
     </main>
   );
 }

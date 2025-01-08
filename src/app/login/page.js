@@ -1,17 +1,16 @@
 'use client'
 import { setAuthState } from "@/lib/features/auth";
 import { setUserState } from "@/lib/features/user";
-import { makeStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import style from "@/app/login/login.module.css";
+import UiLink from "@/components/ui-link";
 
 export default function Login () {
     const router = useRouter();
     const dispatch = useDispatch();
-    const store = useStore();
 
-    const [ loading, setLoading ] = useState(false);
     const [ user, setUser ] = useState({
         email: null,
         password: null,
@@ -33,9 +32,10 @@ export default function Login () {
                     dispatch(setAuthState(true));
                     dispatch(
                         setUserState({
-                        lastname: data.user.lastname,
-                        firstname: data.user.firstname,
-                        email: data.user.email
+                            id: data.user_id,
+                            lastname: data.user.lastname,
+                            firstname: data.user.firstname,
+                            email: data.user.email
                         })
                     );
 
@@ -49,8 +49,20 @@ export default function Login () {
         }
     }
 
+    const homeLink = {
+        label: 'Home',
+        url: '/',
+        type: 'secondary'
+    };
+
+    const registerLink = {
+        label: 'Signin now !',
+        url: '/register',
+        type: 'transparent'
+    }
+
     return (
-        <div>
+        <main className={style.login}>
             <h1>Login</h1>
             <form>
                 <label htmlFor="email">Email </label>
@@ -71,6 +83,12 @@ export default function Login () {
 
                 <button onClick={(e) => submitLogin(e)}>Submit</button>
             </form>
-        </div>
+
+            <div style={{ margin: 'auto', width: 'fit-content' }}>
+                <p>Not registered ? <UiLink {...registerLink} /></p>
+            </div>
+
+            <UiLink {...homeLink} />
+        </main>
     )
 }

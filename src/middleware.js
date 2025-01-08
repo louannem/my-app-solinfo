@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
-import { decrypt } from '@/lib/session'
 import { cookies } from 'next/headers'
-import { useDispatch } from 'react-redux'
+// import clientPromise from '../database/db'
  
 // 1. Specify protected and public routes
 const protectedRoutes = ['/profile']
@@ -9,58 +8,50 @@ const publicRoutes = ['/login', '/register', '/']
  
 export default async function middleware(req) {
   // Check if the current route is protected or public
-  const path = req.nextUrl.pathname
-  const isProtectedRoute = protectedRoutes.includes(path)
-  const isPublicRoute = publicRoutes.includes(path)
+  const path = req.nextUrl.pathname;
+  const isProtectedRoute = protectedRoutes.includes(path);
+  const isPublicRoute = publicRoutes.includes(path);
   
   // Decrypt the session from the cookie
-  const cookie = cookies().get('session')?.value;
-  const session = await decrypt(cookie);
+  let cookie;
+  let isActiveSession;
 
+  cookie = cookies().get('userId')?.value;
   
- 
-  // 5. Redirect to /login if the user is not authenticated
-  if (isProtectedRoute && !session?.id) {
-    return NextResponse.redirect(new URL('/login', req.nextUrl))
-  }
-
- 
-  if(session?.id) {
-    fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${session.id}`)
+  if(cookie) {
+    fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${cookie}`)
     .then(res => res.json())
     .then(data => {
-      return NextResponse.json({
-        code: 200,
-        data: {
-          lastname: data.lastname,
-          firstname: data.firstname,
-          email: data.email
-        }
-      })
+      isActiveSession = data.session.id !== null;
+      
+      // 5. Redirect to /login if the user is not authenticated
+      // if (isProtectedRoute && isActiveSession === false) {
+      //   console.log('user moving', isProtectedRoute, isActiveSession)
+      //   return NextResponse.redirect(new URL('/login', req.nextUrl))
+      // }
+
+      // return NextResponse.redirect(new URL('/login', req.nextUrl))
     });
 
+  } else {
+    if (isProtectedRoute) {
+      return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
   }
 
-  if (
-    isPublicRoute && 
-    session?.id &&
-    req.nextUrl.pathname.startsWith('/login')
-  ) {
-    console.log('redirect to profile')
-  }
  
-  // 6. Redirect to /dashboard if the user is authenticated
-  if (
-    isPublicRoute &&
-    session?.id &&
-    req.nextUrl.pathname.startsWith('/login')
-  ) {
-    return NextResponse.redirect(new URL('/profile', req.nextUrl))
-  } 
+  // // 6. Redirect to /dashboard if the user is authenticated
+  // if (
+  //   isPublicRoute &&
+  //   isActiveSession === true &&
+  //   req.nextUrl.pathname.startsWith('/login')
+  // ) {
+  //   return NextResponse.redirect(new URL('/profile', req.nextUrl))
+  // } 
  
   return NextResponse.next({
     headers: {
-      'x-user-id': session?.id
+      'x-user-id': cookie
     },
   })
 }

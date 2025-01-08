@@ -1,0 +1,58 @@
+.cardWrapper {
+    background-color: white;
+    border-radius: 100px;  
+    background-clip: padding-box; /* !importanté */
+    border: solid 2px transparent;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+    height: 80px;
+    padding: 16px;
+    position: relative;
+    width: 80px;
+}
+
+.cardWrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: -2px; 
+    border-radius: inherit;
+    background: #6AD0C3;
+    z-index: -1;
+}
+
+.cardWrapper:hover::before {
+    opacity: 1;
+    z-index: 0;
+  }
+  
+
+.cardWrapper:hover {  
+    box-shadow: 2px 2px 10px rgb(220, 220, 220);
+    transition: 0.2s;
+}
+
+.cardWrapper h3 {
+    color: var(--font-color);
+    font-size: 13px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.cardWrapper:hover h3 {
+    color: white;
+    transition: 0.2s;
+}
+
+.cardWrapper a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cardWrapper a:hover {
+    color: white;
+    transition: 0.2s;
+}

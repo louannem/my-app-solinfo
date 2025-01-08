@@ -20,6 +20,22 @@ const userSchema = new mongoose.Schema({
        type: String,
        required: [true, "Please provide a password"],
     },
+    description: {
+        type: String,
+        required: false
+    },
+    session: {
+        type: {
+            id: String,
+            createdAt: Date,
+            expiresAt: Date,
+        },
+        required: false
+    },
+    posts: {
+        type: Array,
+        required: false
+    }
 })
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);

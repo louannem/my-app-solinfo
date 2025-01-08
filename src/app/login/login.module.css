@@ -1,0 +1,37 @@
+.login {
+    background-color: #f7f7f7;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 300px;
+}
+
+.login form label {
+    font-size: 12px;
+}
+
+.login form button {
+    background-color: grey;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin: 5px auto;
+    padding: 4px 8px;
+    width: fit-content;
+}
+
+.login button:hover {
+    background-color: rgb(91, 91, 91);
+    transition: 0.5s;
+}
+
+.login input {
+    border: 1px grey solid;
+    border-radius: 4px;
+    margin: 0 0 10px;
+    padding: 4px 6px;
+}

@@ -1,0 +1,118 @@
+.userPage {
+    margin: 0;
+    padding: 0;
+}
+
+.userPageHeader {
+    background-color: #6AD0C3;
+    height: 150px;
+    position: relative;
+    width: 100vw;
+}
+
+.userPageInfos {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    top: 90%;
+    width: fit-content;
+}
+
+.userPageInfos h1 {
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    font-size: 20px;
+    padding: 8px 16px;
+    width: fit-content;
+}
+
+.userPageInfos span {
+    color: lightgrey;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.userPageDescription {
+    color: grey;
+    font-size: 13px;
+    margin: 50px auto;
+    max-width: 400px;
+    width: fit-content;
+}
+
+.userPageData {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    width: 100vw;
+}
+
+.userPageOwnerActions {
+    right: 2rem;
+    position: absolute;
+    top: 2rem;
+    
+}
+
+.userPageContent {
+    background-color: rgb(246, 246, 246) ;
+    border-left: 2px lightgrey solid;
+    border-right: 2px lightgrey solid;
+    min-height: 30vh;
+    margin: 0 auto;
+    padding: 1rem 0;
+    width: 70vw;
+}
+
+.userPagePostInput {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.userPagePostInput textarea {
+    min-height: 40px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.userPagePostInput button {
+    border: none;
+    border-radius: 8px;
+    background-color: lightgrey;
+    cursor: pointer;
+    margin: auto ;
+    padding: 4px 8px;
+    width: fit-content;
+}
+
+.userPagePostsWrapper {
+	box-sizing: border-box;
+	margin-top: 20px;
+	padding: 10px 24px;
+}
+.userPagePostsBlock {
+	align-items: center;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 3px 3px -3px #a9a9a9;
+	display: flex;
+	padding: 6px 8px;
+	width: 100%;
+}
+
+.userPagePostsBlock span {
+	color: lightgray;
+	font-size: 12px;
+	margin-right: 12px;
+}
+
+.userPagePostsBlock p {
+	font-size: 14px;
+}

@@ -1,5 +1,5 @@
 
-import { SignJWT, jwtDecrypt } from "jose";
+import { SignJWT } from "jose";
 import clientPromise from "../../../database/db";
 import bycrypt from "bcrypt";
 
@@ -38,9 +38,9 @@ export default async (req, res) => {
                 const id = (user._id).toString();
                 const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
                 const session = await encrypt({ id, expiresAt });
-                console.log(session)
 
-                const cookies = `session=${session}; value=${session}; httpOnly=false;expires=${expiresAt.toUTCString()};path=/` 
+                // const cookies = `session=${session}; httpOnly=false;expires=${expiresAt.toUTCString()};path=/` 
+                const cookies = `userId= ${id}; expires=${expiresAt.toUTCString()};path=/`;
 
                 res.setHeader("Set-Cookie", cookies);
 
