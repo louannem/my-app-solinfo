@@ -36,7 +36,7 @@
 
 .home_greeting {
     align-items: center;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    background: #6AD0C3;
     border-radius: 16px;
     box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
     color: white;
@@ -126,7 +126,7 @@
 }
 
 .homeSection_input_separator {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    background: #6AD0C3;
     border-radius: 10px 10px 0px 10px;
     /* height: 10px; */
     margin-bottom: 20px;

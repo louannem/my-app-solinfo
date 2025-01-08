@@ -22,7 +22,7 @@
   z-index: -1;
   margin: -2px; /* !importanté */
   border-radius: inherit; /* !importanté */
-  background: linear-gradient(100deg, var(--primary-color), var(--secondary-color) 100%);
+  background: #6AD0C3;
 }
 
 .chatroomCard:hover {

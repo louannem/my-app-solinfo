@@ -19,7 +19,7 @@
     top: 0; right: 0; bottom: 0; left: 0;
     margin: -2px; 
     border-radius: inherit;
-    background: linear-gradient(100deg, var(--primary-color), var(--secondary-color) 100%);
+    background: #6AD0C3;
     z-index: -1;
 }
 

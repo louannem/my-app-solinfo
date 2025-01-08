@@ -24,7 +24,7 @@
 }
 
 .uiLinkSecondary:hover {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color) 80%);
+    background: #6AD0C3;
     border: 2px solid transparent;
     color: white;
     transition: 0.2s
