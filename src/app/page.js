@@ -6,8 +6,8 @@ import style from "@/style/home.module.css";
 import { faEnvelope, faMessage, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import ChatroomCard from "@/components/room-card";
 import Button from "@/components/button";
+import UiLink from "@/components/ui-link";
 
 
 export default function Home() {
@@ -33,11 +33,13 @@ export default function Home() {
     setIsAuth(auth);
     console.log(user)
 
-    fetch(`/api/users/${user.id}`)
-    .then(res => res.json())
-    .then((data) => {      
-      setNewPost(data.posts[data.posts.length - 1])
-    })
+		if (user.id) {
+			fetch(`/api/users/${user.id}`)
+			.then(res => res.json())
+			.then((data) => {      
+				setNewPost(data.posts[data.posts.length - 1])
+			})
+		}
   }, [auth]);
 
   useEffect(() => {
@@ -73,6 +75,11 @@ export default function Home() {
       url: '/'
     }
   ];
+
+	const loginLink = {
+    label: 'Login',
+    url: '/login'
+  };
   
   const submitButton = { 
     label: 'Submit',
@@ -95,7 +102,7 @@ export default function Home() {
 
   return (
     <main>
-      {isAuth && 
+      {isAuth ? 
         <>
           <div className={style.home_greeting}> 
             <img />
@@ -108,9 +115,9 @@ export default function Home() {
             <div className={style.home_greeting_icons}>
               <ul>
                 {  
-                  headerIcons.map((item) => {
+                  headerIcons.map((item, i) => {
                     return (
-                      <li>
+                      <li key={i}>
                         <Link href={item.url}>
                           <FontAwesomeIcon icon={item.icon} />
                         </Link>
@@ -133,9 +140,13 @@ export default function Home() {
             <Button {...submitButton} />
           </section>
         </>
+      : 
+      <section>
+        <h1>Welcome !</h1>
+				<p>Log in to explore our app !</p>
+				<UiLink {...loginLink} />
+      </section>
       }
-
-      
 
       <section className={style.homeSection}>
         <h2>Liste des utilisateurs</h2>
@@ -151,27 +162,9 @@ export default function Home() {
             })        
           }
           </ol>
-        : null
+					: null
         }
-      </section>
-
-      <section className={style.homeSection}>
-        <h2>Liste des conversations</h2>
-        { chatrooms ? 
-          <ol className={style.homeSection__chatroomsList}>
-          {
-            chatrooms.map((room) => (
-              <li key={`room-${room._id}`}>
-                <ChatroomCard {...room} />
-              </li>
-            ))
-          }
-          </ol>
-        : null
-        }
-      </section>
-
-          
+      </section>        
     </main>
   );
 }

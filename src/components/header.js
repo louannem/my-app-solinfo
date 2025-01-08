@@ -66,24 +66,24 @@ export default function Header() {
   };
 
     return (        
-        <div className={style.navigation} >
-            <Link href="/"><img height={40} width={55} /></Link>
-            <div className={style.navigation_actions}>
-            {
-                isAuth === true ? 
-                <div className={style.navigationActions} >
-                    <FontAwesomeIcon 
-                      icon={faArrowRightFromBracket} 
-                      onClick={logout} 
-                      style={{ cursor: 'pointer' }}
-                    />
-                    <Link href='/profile'>
-                      <FontAwesomeIcon icon={faUser} color="black" />
-                    </Link>
-                </div>
-                : <UiLink {...loginLink} />
-                }
-            </div>
-        </div>
+			<div className={style.navigation} >
+				<Link href="/"><img height={40} width={55} /></Link>
+				<div className={style.navigation_actions}>
+				{
+					isAuth === true ? 
+						<div className={style.navigationActions} >
+								<FontAwesomeIcon 
+									icon={faArrowRightFromBracket} 
+									onClick={logout} 
+									style={{ cursor: 'pointer' }}
+								/>
+								<Link href='/profile'>
+									<FontAwesomeIcon icon={faUser} color="black" />
+								</Link>
+						</div>
+					: <UiLink {...loginLink} />
+					}
+				</div>
+			</div>
     )
 };
