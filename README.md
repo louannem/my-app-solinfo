@@ -20,7 +20,7 @@ L'interface est développée avec React, et notamment NextJS. Le partage des don
 
 Côté back end:
 - NextJs permet de faire tourner un serveur interne à l'application, créé via Express au sein du fichier server.js. Dans ce fichier est aussi présent la connexion à la base de données MongoDB.
-- L'app possède une API interne qui permet les échanges avec la BDD, chaque endpoint étant créé  dans le dossier pages/api. La structure du dossier est identique à celle des pages: un endpoint est créé au sein d'un fichier et les endpoints d'API prenant un paramètre sous structurés dans des sous-dossiers éponymes, avec le nom du fichier d'enpoint correspondant à celui de son paramètre entre crochets (ex. : pages/api/users/[id] pour créer un endpoint du type /api/users/0000).
+- L'app possède une API interne qui permet les échanges avec la BDD, chaque endpoint étant créé  dans le dossier pages/api. La structure du dossier est identique à celle des pages: un endpoint est créé au sein d'un fichier et les endpoints d'API prenant un paramètre sous structurés dans des sous-dossiers éponymes, avec le nom du fichier d'enpoint correspondant à celui de son paramètre entre crochets (ex. : pages/api/users/[id].js pour créer un endpoint du type /api/users/0000).
 
 
 ## Lancer l'application

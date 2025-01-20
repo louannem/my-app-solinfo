@@ -16,7 +16,7 @@ export default async function middleware(req) {
   let cookie;
   let isActiveSession;
 
-  cookie = cookies().get('userId')?.value;
+  cookie = await cookies().get('userId')?.value;
   
   if(cookie) {
     fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${cookie}`)
