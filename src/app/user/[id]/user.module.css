@@ -4,7 +4,7 @@
 }
 
 .userPageHeader {
-    background-color: #6AD0C3;
+    /* background-color: var(--primary-color); */
     height: 150px;
     position: relative;
     width: 100vw;

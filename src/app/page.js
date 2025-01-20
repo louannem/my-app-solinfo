@@ -28,6 +28,18 @@ export default function Home() {
 
    const  [newPost, setNewPost] = useState(null);
 
+	const [ mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+	useEffect(() => {
+		const updateMousePosition = (ev) => {
+				setMousePosition({ x: ev.clientX, y: ev.clientY });
+		};
+		window.addEventListener('mousemove', updateMousePosition);
+		return () => {
+				window.removeEventListener('mousemove', updateMousePosition);
+		};
+	}, []);
+
 
   useEffect(() => { 
     setIsAuth(auth);
@@ -100,11 +112,21 @@ export default function Home() {
   };
 
 
+
   return (
     <main>
       {isAuth ? 
         <>
-          <div className={style.home_greeting}> 
+          <div 
+						className={style.home_greeting}
+						style={{
+							backgroundImage: `radial-gradient(
+								circle at ${mousePosition.x}px ${mousePosition.y}px,
+								rgb(238, 232, 255), 
+								rgba(0,0,0,0) 20% 
+							)`
+						}}
+					> 
             <img />
             <div className={style.home_greeting_text}>
               <h2>Welcome {user.firstname} !</h2> 
