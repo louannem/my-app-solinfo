@@ -1,7 +1,7 @@
 'use client'
 import { useAppSelector } from "@/lib/store";
 import style from "@/style/home.module.css";
-import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -23,19 +23,7 @@ export default function HeroHeader() {
 		return () => {
 				window.removeEventListener('mousemove', updateMousePosition);
 		};
-	}, []);
-
-	const headerIcons = [
-    {
-      icon: faUser,
-      url: '/profile'
-    },
-    {
-      icon: faEnvelope,
-      url: '/'
-    }
-  ];
-	
+	}, []);	
 	
 	const loginLink = {
     label: 'Login',
@@ -63,7 +51,12 @@ export default function HeroHeader() {
 					</p>
 				</div>
 				<div className={style.home_greeting_icons}>
-					<ul>
+					<div className={style.home_greeting_icons_wrapper}>
+						<Link href="/profile">
+							<FontAwesomeIcon icon={faUser} />
+						</Link>
+					</div>
+					{/* <ul>
 						{  
 							headerIcons.map((item, i) => {
 								return (
@@ -76,7 +69,7 @@ export default function HeroHeader() {
 							})
 						}
 	
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 			<section className={[`${style.homeSection} ${style.homeSection_input}`].join(' ')}>
