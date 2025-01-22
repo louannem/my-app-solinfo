@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import style from "@/app/login/login.module.css";
-import UiLink from "@/components/ui-link";
+import UiLink from "@/components/elements/ui-link";
 
 export default function Login () {
     const router = useRouter();

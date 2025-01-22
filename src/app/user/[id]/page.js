@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-import UiLink from "@/components/ui-link";
+import UiLink from "@/components/elements/ui-link";
 import style from "./user.module.css";
 import { useAppSelector } from "@/lib/store";
 import Button from "@/components/button";

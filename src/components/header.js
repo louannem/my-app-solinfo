@@ -1,14 +1,17 @@
-import { useAppSelector } from "@/lib/store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import style from "../style/home.module.css";
-import { setAuthState } from "@/lib/features/auth";
-import UiLink from "./ui-link";
 import { useRouter } from "next/navigation";
-import { faArrowRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { useAppSelector } from "@/lib/store";
+import { setAuthState } from "@/lib/features/auth";
 import { setUserState } from "@/lib/features/user";
+import Link from "next/link";
+import UiLink from "./elements/ui-link";
+import style from "../style/home.module.css";
+import { 
+	faArrowRightFromBracket, 
+	faUser 
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
     const user = useAppSelector((state) => state.user);
