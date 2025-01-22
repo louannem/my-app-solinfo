@@ -1,7 +1,5 @@
 'use client'
-import { useParams } from "next/navigation";
 import style from "../../../app/user/[id]/user.module.css";
-import { useEffect } from "react";
 import UiLink from "@/components/elements/ui-link";
 
 
