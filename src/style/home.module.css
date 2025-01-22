@@ -35,17 +35,23 @@
 }
 
 .home_greeting {
-    align-items: center;
     background: var(--primary-color);
 		border: 0px var(--secondary-color) solid;
     border-radius: 16px;
     box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
     color: var(--secondary-color);
-    display: flex;
     height: 300px;
-    padding: 70px 50px;
+    /* padding: 70px 50px; */
     position: relative;
     width: 100%;
+}
+
+.home_greeting > div {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	padding: 70px 50px;
+	width: 100%;
 }
 
 .home_greeting img {
@@ -125,7 +131,7 @@
 
 .home_greeting_icons_wrapper svg {
 	color: var(--contrast-color);
-	height: 20;
+	height: 20px;
 	width: 20px;
 }
 
