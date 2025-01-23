@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import style from "./gradient-background.module.css"
 
-export default function GradientBackground({children, color = "rgb(238, 232, 255)"}) {
+export default function GradientBackground({children, start = "rgb(238, 232, 255)", end = "rgba(0,0,0,0"}) {
 	const [ mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	
 	useEffect(() => {
@@ -23,8 +23,8 @@ export default function GradientBackground({children, color = "rgb(238, 232, 255
 			style={{
 				backgroundImage: `radial-gradient(
 					circle at ${mousePosition.x}px ${mousePosition.y}px,
-					${color}, 
-					rgba(0,0,0,0) 20% 
+					${start}, 
+					${end} 20% 
 				)`
 			}}
 		> 

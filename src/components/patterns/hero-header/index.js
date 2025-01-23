@@ -35,7 +35,7 @@ export default function HeroHeader() {
 		auth ?
 		<>
 			<div  className={style.home_greeting}> 
-				<GradientBackground>
+				<GradientBackground start="rgb(238, 232, 255)" end="rgba(0,0,0,0)">
 					<img />
 					<div className={style.home_greeting_text}>
 						<h2>Welcome {user.firstname} !</h2> 
