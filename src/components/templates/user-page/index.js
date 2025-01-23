@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Button from "@/components/elements/button";
 import UiLink from "@/components/elements/ui-link";
 import style from "../../../app/user/[id]/user.module.css";
+import UserPost from "@/components/patterns/user-post";
 
 export default function UserPage() {
 	const activeUser = useAppSelector(state => state.user);
@@ -61,7 +62,7 @@ export default function UserPage() {
 				/>
 				<section className={style.userPageContent}>
 					{
-						activeUser.id === params._id ? 
+						activeUser.id === params.id ? 
 							<div className={style.userPagePostInput}>
 								<textarea placeholder="Write a post !" />
 								<Button {...submitButton} />
@@ -73,10 +74,7 @@ export default function UserPage() {
 						{
 							user.posts ? user.posts.map((post) => {
 								return (
-									<article key={post.createdAt} className={style.userPagePostsBlock}>
-											<span>{post.createdAt}</span>
-											<p>{post.content}</p>
-									</article>
+									<UserPost post={post} key={post.createdAt} />
 								)
 							})
 							: <p>{user.fistname} {user.lastname} didn't post anything yet !</p>

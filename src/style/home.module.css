@@ -120,7 +120,7 @@
 	box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
 	position: absolute;
   inset: 0.625rem;
-  background: white;
+  background: var(--primary-color);
   border-radius: 50%;
   display: flex;
   justify-content: center;

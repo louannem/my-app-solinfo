@@ -60,7 +60,7 @@
 }
 
 .userPageContent {
-    background-color: rgb(246, 246, 246) ;
+    /* background-color: rgb(246, 246, 246) ; */
     border-left: 2px lightgrey solid;
     border-right: 2px lightgrey solid;
     min-height: 30vh;
@@ -93,26 +93,10 @@
 }
 
 .userPagePostsWrapper {
+	align-items: center;
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
 	margin-top: 20px;
 	padding: 10px 24px;
-}
-.userPagePostsBlock {
-	align-items: center;
-	background-color: white;
-	border-radius: 8px;
-	box-shadow: 0 3px 3px -3px #a9a9a9;
-	display: flex;
-	padding: 6px 8px;
-	width: 100%;
-}
-
-.userPagePostsBlock span {
-	color: lightgray;
-	font-size: 12px;
-	margin-right: 12px;
-}
-
-.userPagePostsBlock p {
-	font-size: 14px;
 }
