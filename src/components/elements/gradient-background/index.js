@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import style from "./gradient-background.module.css"
 
-export default function GradientBackground({children, start = "rgb(238, 232, 255)", end = "rgba(0,0,0,0"}) {
+export default function GradientBackground({children, start="rgb(238, 232, 255)", end="rgba(0,0,0,0)"}) {
 	const [ mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	
 	useEffect(() => {
