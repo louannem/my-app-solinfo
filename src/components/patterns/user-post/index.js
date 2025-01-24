@@ -5,7 +5,7 @@ import style from "./style.module.css";
 export default function UserPost({ post }) {
 	return (
 		<article key={post.createdAt} className={style.userPagePostsBlock}>
-			<GradientBackground end="#ffd4e2">
+			<GradientBackground end="#fcedf2">
 					<span className={style.userPagePostsBlock_avatar}>
 						<GradientBackground start="#ffd4e2" />
 					</span>
