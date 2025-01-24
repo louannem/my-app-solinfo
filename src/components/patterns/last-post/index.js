@@ -7,24 +7,24 @@ import Button from "@/components/elements/button";
 import style from "@/style/home.module.css";
 
 export default function LastPost() {	
-  const user = useAppSelector((state) => state.user);
-	const  [newPost, setNewPost] = useState(null);
-	const  [post, setPost] = useState([]);
+  	const user = useAppSelector((state) => state.user);
+	const  [postLists, setPostsList] = useState([]);
+	const  [post, setPost] = useState({});
 
 	const submitButton = { 
     label: 'Submit',
     handleClick: () => {
-      fetch(`/api/users/post/${user.id}`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-          },
-        body: JSON.stringify({
-            posts: post
-        })
-      })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+		fetch(`/api/users/post/${user.id}`, {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				posts: [...postLists, post]
+			})
+		})
+		.then((res) => res.json())
+		.then((data) => console.log(data))
     }
   };
 
@@ -33,7 +33,7 @@ export default function LastPost() {
 			fetch(`/api/users/${user.id}`)
 			.then(res => res.json())
 			.then((data) => {      
-				setNewPost(data.posts[data.posts.length - 1]);
+				setPostsList(data.posts);
 				setPost(data.posts);
 			})
 		}
@@ -41,12 +41,14 @@ export default function LastPost() {
 
 	return (
 		<>
-			{ newPost ?  <div>{newPost.content}</div> : null }
+			{ postLists.length > 0 ?  <div>{postLists[postLists.length - 1].content}</div> : null }
 			<span>Something new ? <FontAwesome icon={faMessage}  /></span>
 			<div className={style.homeSection_input_separator}>
 				<textarea 
 					placeholder="Write a post !" 
-					onChange={(e) => setPost([...post, { content: e.target.value}])} 
+					onChange={(e) => {
+						setPost({content: e.target.value})
+					} }
 				/>
 			</div>
 			<Button {...submitButton} />

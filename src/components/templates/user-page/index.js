@@ -39,6 +39,7 @@ export default function UserPage() {
 				setUser(data);
 				setPosts(data.posts);
 				setLoading(false);
+				console.log(data)
 			})
 			.catch(e => {
 				console.error(e);
@@ -74,7 +75,7 @@ export default function UserPage() {
 
 					<section className={style.userPagePostsWrapper}>
 						{
-							user.posts ? user.posts.map((post, index) => {
+							posts.length > 0 ? user.posts.map((post, index) => {
 								return (
 									<UserPost post={post} key={post.createdAt} index={index} array={user.posts} />
 								)
