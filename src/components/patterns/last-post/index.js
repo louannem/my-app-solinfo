@@ -9,6 +9,7 @@ import style from "@/style/home.module.css";
 export default function LastPost() {	
   const user = useAppSelector((state) => state.user);
 	const  [newPost, setNewPost] = useState(null);
+	const  [post, setPost] = useState([]);
 
 	const submitButton = { 
     label: 'Submit',
@@ -19,7 +20,7 @@ export default function LastPost() {
             "Content-Type": "application/json",
           },
         body: JSON.stringify({
-            posts: [post]
+            posts: post
         })
       })
       .then((res) => res.json())
@@ -32,7 +33,8 @@ export default function LastPost() {
 			fetch(`/api/users/${user.id}`)
 			.then(res => res.json())
 			.then((data) => {      
-				setNewPost(data.posts[data.posts.length - 1])
+				setNewPost(data.posts[data.posts.length - 1]);
+				setPost(data.posts);
 			})
 		}
   }, [user]);
@@ -44,7 +46,7 @@ export default function LastPost() {
 			<div className={style.homeSection_input_separator}>
 				<textarea 
 					placeholder="Write a post !" 
-					onChange={(e) => setPost({...post, content: e.target.value})} 
+					onChange={(e) => setPost([...post, { content: e.target.value}])} 
 				/>
 			</div>
 			<Button {...submitButton} />

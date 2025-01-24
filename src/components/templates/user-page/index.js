@@ -11,6 +11,7 @@ import UserPost from "@/components/patterns/user-post";
 export default function UserPage() {
 	const activeUser = useAppSelector(state => state.user);
 	const [ user, setUser ] = useState(null);
+	const [posts, setPosts ] = useState([]);
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState(false);
 
@@ -36,6 +37,7 @@ export default function UserPage() {
 			.then(res => res.json())
 			.then(data => {
 				setUser(data);
+				setPosts(data.posts);
 				setLoading(false);
 			})
 			.catch(e => {
@@ -72,9 +74,9 @@ export default function UserPage() {
 
 					<section className={style.userPagePostsWrapper}>
 						{
-							user.posts ? user.posts.map((post) => {
+							user.posts ? user.posts.map((post, index) => {
 								return (
-									<UserPost post={post} key={post.createdAt} />
+									<UserPost post={post} key={post.createdAt} index={index} array={user.posts} />
 								)
 							})
 							: <p>{user.fistname} {user.lastname} didn't post anything yet !</p>

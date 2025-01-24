@@ -118,16 +118,19 @@ position: absolute;
 }
 
 .home_greeting_icons_wrapper a {	
-	box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
-	position: absolute;
-  inset: 0.625rem;
-  background: var(--primary-color);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.3s;
+    box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    position: absolute;
+    inset: 0.625rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: 0.3s;
+}
 
+.home_greeting_icons_wrapper a div {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 .home_greeting_icons_wrapper svg {

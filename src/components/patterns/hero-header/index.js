@@ -46,7 +46,9 @@ export default function HeroHeader() {
 					<div className={style.home_greeting_icons}>
 						<div className={style.home_greeting_icons_wrapper}>
 							<Link href="/profile">
+							<GradientBackground range="80%">
 								<FontAwesomeIcon icon={faUser} />
+							</GradientBackground>
 							</Link>
 						</div>
 						{/* <ul>

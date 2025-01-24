@@ -18,11 +18,11 @@ export default function UiLink(data) {
 	}, [data.type])
     
     return(
-			<a 
-				href={data.url} 
-				className={ [type, style.uiLink].join(' ') }
-			>
-			{data.label}
-			</a>
+		<a 
+			href={data.url} 
+			className={ [type, style.uiLink].join(' ') }
+		>
+		{data.label}
+		</a>
     )
 }

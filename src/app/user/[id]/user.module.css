@@ -100,3 +100,7 @@
 	margin-top: 20px;
 	padding: 10px 24px;
 }
+
+.userPagePostsWrapper article {
+    margin: 20px 0;
+}
