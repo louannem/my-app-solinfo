@@ -24,22 +24,20 @@ export default function UserPost({ post, index, array }) {
 	}
 	return (
 		<article key={post.createdAt} className={style.userPagePostsBlock}>
-			<GradientBackground end="#fcedf2" range="30%">
-				<div className={style.userPagePostsBlock_main}>
-					<span className={style.userPagePostsBlock_avatar}>
-						<GradientBackground start="#ffd4e2" range="60%" />
-					</span>
-				<div className={style.userPagePostsBlock_content}>
-					<span>{post.createdAt}</span>
-					<p>{post.content}</p>
-				</div>
-				</div>
-				<div className={style.userPagePostsBlock_footer}>
-					<button onClick={deletePost} className={style.userPagePostsBlock_deleteCta}>
-						<FontAwesomeIcon icon={faTrash} />
-					</button>
-				</div>
-			</GradientBackground>
+			<div className={style.userPagePostsBlock_main}>
+				<span className={style.userPagePostsBlock_avatar}>
+					<GradientBackground start="#ffd4e2" range="60%" />
+				</span>
+			<div className={style.userPagePostsBlock_content}>
+				<span>{post.createdAt}</span>
+				<p>{post.content}</p>
+			</div>
+			</div>
+			<div className={style.userPagePostsBlock_footer}>
+				<button onClick={deletePost} className={style.userPagePostsBlock_deleteCta}>
+					<FontAwesomeIcon icon={faTrash} />
+				</button>
+			</div>
 		</article>
 	)
 }

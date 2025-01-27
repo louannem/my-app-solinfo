@@ -106,15 +106,15 @@ position: absolute;
 }
 
 .home_greeting_icons_wrapper::after {
-	position: absolute;
-  content: "";
-  top: -1rem;
-  right: 1rem;
-  background: transparent;
-  width: 1rem;
-  height: 1rem;
-  border-bottom-right-radius: 1.25rem;
-  box-shadow: 0.313rem 0.313rem 0 0.313rem white;
+    position: absolute;
+    content: "";
+    top: -1rem;
+    right: 1rem;
+    background: transparent;
+    width: 1rem;
+    height: 1rem;
+    border-bottom-right-radius: 1.25rem;
+    box-shadow: 0.313rem 0.313rem 0 0.313rem white;
 }
 
 .home_greeting_icons_wrapper a {	

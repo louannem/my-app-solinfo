@@ -5,6 +5,7 @@ import FontAwesome from "react-fontawesome";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import Button from "@/components/elements/button";
 import style from "@/style/home.module.css";
+import UserPost from "../user-post";
 
 export default function LastPost() {	
   	const user = useAppSelector((state) => state.user);
@@ -41,7 +42,7 @@ export default function LastPost() {
 
 	return (
 		<>
-			{ postLists.length > 0 ?  <div>{postLists[postLists.length - 1].content}</div> : null }
+			{ postLists.length > 0 ?  <UserPost post={postLists[postLists.length - 1]} /> : null }
 			<span>Something new ? <FontAwesome icon={faMessage}  /></span>
 			<div className={style.homeSection_input_separator}>
 				<textarea 
