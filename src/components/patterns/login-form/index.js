@@ -4,6 +4,9 @@ import { useAppSelector } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import style from "./style.module.css";
+import { setAuthState } from "@/lib/features/auth";
+import { setUserState } from "@/lib/features/user";
 
 export default function LoginForm() {
 	const auth = useAppSelector(state => state.auth.authState);
@@ -36,7 +39,7 @@ export default function LoginForm() {
 				if(data.ok) {                
 					dispatch(setAuthState(true));
 					dispatch(
-						setUser({
+						setUserState({
 							id: data.user_id,
 							lastname: data.user.lastname,
 							firstname: data.user.firstname,
@@ -79,7 +82,7 @@ export default function LoginForm() {
 		</form>
 
 		<div style={{ margin: 'auto', width: 'fit-content' }}>
-				<p>Not registered ? <UiLink {...registerLink} /></p>
+				<p className={style.formCta}>Not registered ? <UiLink {...registerLink} /></p>
 		</div>
 		</>
 	)

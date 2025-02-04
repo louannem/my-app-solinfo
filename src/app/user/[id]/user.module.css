@@ -4,7 +4,7 @@
 }
 
 .userPageHeader {
-    /* background-color: var(--primary-color); */
+		background: linear-gradient(120deg, #fff6f9 10%, var(--contrast-color));
     height: 150px;
     position: relative;
     width: 100vw;

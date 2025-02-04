@@ -8,7 +8,7 @@ export default function GradientBackground({children, start="#eee8ff", end="rgba
 	useEffect(() => {
 		const updateMousePosition = (ev) => {
 			// console.log(ev)
-				setMousePosition({ x: ev.layerX, y: ev.layerY });
+				setMousePosition({ x: ev.clientX, y: ev.clientY });
 		};
 		window.addEventListener('mousemove', updateMousePosition);
 		

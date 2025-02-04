@@ -1,19 +1,26 @@
 .uiLink {
-    color: black;
-    cursor: pointer;
-    font-size: 13px;
-    text-decoration: none;
+	align-items: center;
+	color: black;
+	cursor: pointer;
+	display: flex;
+	font-size: 13px;
+	text-decoration: none;
+	width: fit-content;
+}
+
+.uiLink_icon {
+	margin-left: 8px;
 }
 
 .uiLinkDefault {
-    background-color: lightgrey;
+    background-color: var(--contrast-color);
     border-radius: 4px;
     padding: 6px 8px;
 }
 
 .uiLinkDefault:hover {
-    background-color: #c7c7c7;
-    transition: 0.5s;
+    filter: brightness(0.9) ;
+    transition: 0.7s;
 }
 
 .uiLinkSecondary {
@@ -39,4 +46,9 @@
 .uiLinkHeader:hover {
     box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
     transition: 0.2s;
+}
+
+.uiLinkTransparent {
+	background-color: transparent;    
+	padding: 6px 8px;
 }

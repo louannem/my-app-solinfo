@@ -18,5 +18,5 @@ export default function UserProfile() {
 			<ProfileHeader profile={user} />
 			<ProfileForm profile={user} />
 		</>
-	: <p>Chargement....</p>
+	: <p>Chargement...</p>
 }

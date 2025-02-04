@@ -12,7 +12,7 @@ export default function Home() {
 			<HeroHeader  />
 
       <section className={style.homeSection}>
-        <h2>Liste des utilisateurs</h2>
+        <h2>Our last seen users</h2>
         <UsersList />
       </section>        
     </main>
