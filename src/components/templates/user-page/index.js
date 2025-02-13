@@ -12,6 +12,7 @@ export default function UserPage() {
 	const activeUser = useAppSelector(state => state.user);
 	const [ user, setUser ] = useState(null);
 	const [posts, setPosts ] = useState([]);
+	const  [newPost, setNewPost] = useState({});
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState(false);
 
@@ -25,9 +26,22 @@ export default function UserPage() {
 	}
 
 	const submitButton = { 
-			label: 'Submit',
-			handleClick: () => {}
-	}
+		label: 'Submit',
+		handleClick: () => {
+			fetch(`/api/users/post/${user.id}`, {
+				method: 'POST',
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newPost)
+			})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setPosts(data)
+			})
+		}
+	};
 
 	useEffect(() => {
 		if(params.id) {
@@ -39,7 +53,6 @@ export default function UserPage() {
 				setUser(data);
 				setPosts(data.posts);
 				setLoading(false);
-				console.log(data)
 			})
 			.catch(e => {
 				console.error(e);
@@ -67,7 +80,12 @@ export default function UserPage() {
 					{
 						activeUser.id === params.id ? 
 							<div className={style.userPagePostInput}>
-								<textarea placeholder="Write a post !" />
+								<textarea 
+									placeholder="Write a post !" 
+									onChange={(e) => {
+										setNewPost({content: e.target.value})
+									} }
+								/>
 								<Button {...submitButton} />
 							</div>
 						: null
@@ -80,7 +98,7 @@ export default function UserPage() {
 									<UserPost post={post} key={post.createdAt} index={index} array={user.posts} />
 								)
 							})
-							: <p>{user.fistname} {user.lastname} didn't post anything yet !</p>
+							: <p>{user.name} didn't post anything yet !</p>
 						}
 					</section>
 				</section>

@@ -9,15 +9,14 @@ export default function UserPost({ post, index, array }) {
 	const params = useParams();
 
 	const deletePost = () => {
-		const newArray = array.filter((post, i) => i !== index);
-		fetch(`/api/users/post/${params.id}`, {
+		fetch(`/api/users/post/delete/${post.id.toString()}`, {
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json",
 			  },
-			body: JSON.stringify({
-				posts: newArray
-			})
+				body: JSON.stringify({
+					userId: params.id
+				})
 		  })
 		  .then((res) => res.json())
 		  .then(() => window.location.reload());

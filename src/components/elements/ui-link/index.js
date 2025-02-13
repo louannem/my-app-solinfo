@@ -25,12 +25,12 @@ export default function UiLink(data) {
 	}, [data.icon])
     
     return(
-		<a 
-			href={data.url} 
-			className={ [type, style.uiLink].join(' ') }
-		>
-		{data.label}
-		{ icon }
-		</a>
+			<a 
+				href={data.url} 
+				className={ [type, style.uiLink].join(' ') }
+			>
+				{data.label}
+				{ icon }
+			</a>
     )
 }

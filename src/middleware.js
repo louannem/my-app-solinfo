@@ -22,15 +22,15 @@ export default async function middleware(req) {
     fetch(`${process.env.__NEXT_PRIVATE_ORIGIN}/api/users/${cookie}`)
     .then(res => res.json())
     .then(data => {
-      isActiveSession = data.session.id !== null;
+      isActiveSession = data[0]?.id !== null;
       
       // 5. Redirect to /login if the user is not authenticated
-      // if (isProtectedRoute && isActiveSession === false) {
-      //   console.log('user moving', isProtectedRoute, isActiveSession)
-      //   return NextResponse.redirect(new URL('/login', req.nextUrl))
-      // }
+      if (isProtectedRoute && isActiveSession === false) {
+        console.log('user moving', isProtectedRoute, isActiveSession)
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
+      }
 
-      // return NextResponse.redirect(new URL('/login', req.nextUrl))
+      return NextResponse.redirect(new URL('/login', req.nextUrl))
     });
 
   } else {

@@ -5,37 +5,54 @@ import bycrypt from "bcrypt";
 import User from "@/app/models/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+import { write } from "@/lib/neo4j";
 
 
 export default async (req, res) => {
-    try {
-        const body = JSON.parse(req.body);
-        const { email, password, firstname, lastname } = body;
+    
+    const body = JSON.parse(req.body);
+    const { email, password, firstname, lastname } = body;
 
-        mongoose.connect(process.env.URL);
-        
-        const salt = await bycrypt.genSalt(10)
+    const salt = await bycrypt.genSalt(10)
         const hashedPassword = await bycrypt.hash(password, salt)
 
-        const newUser = new User({
-            firstname,
-            lastname,
-            email,
-            password: hashedPassword
-        })
+    const createUser = await write(`
+        CREATE (u:USER {
+            name: '${firstname}',
+            email: '${email}',
+            password: '${hashedPassword}'
+        }) RETURN u
+    `);
+    console.log(createUser)
 
-        // Saves the new user to the database.
-        const savedUser = await  newUser.save();
+    // try {
+    //     const body = JSON.parse(req.body);
+    //     const { email, password, firstname, lastname } = body;
+
+    //     mongoose.connect(process.env.URL);
+        
+    //     const salt = await bycrypt.genSalt(10)
+    //     const hashedPassword = await bycrypt.hash(password, salt)
+
+    //     const newUser = new User({
+    //         firstname,
+    //         lastname,
+    //         email,
+    //         password: hashedPassword
+    //     })
+
+    //     // Saves the new user to the database.
+    //     const savedUser = await  newUser.save();
 
 
-        return res.status(403).json({
-            message: "User created successfully",
-            ok: true,
-            savedUser
-        })
+    //     return res.status(403).json({
+    //         message: "User created successfully",
+    //         ok: true,
+    //         savedUser
+    //     })
             
        
-    } catch (e) {
-        console.error(e);
-    }
+    // } catch (e) {
+    //     console.error(e);
+    // }
 }

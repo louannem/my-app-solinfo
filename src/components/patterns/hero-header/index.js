@@ -13,18 +13,6 @@ export default function HeroHeader() {
 	const auth = useAppSelector(state => state.auth.authState);
   const user = useAppSelector((state) => state.user);
 
-	const [ mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-	// useEffect(() => {
-	// 	const updateMousePosition = (ev) => {
-	// 			setMousePosition({ x: ev.clientX, y: ev.clientY });
-	// 	};
-	// 	window.addEventListener('mousemove', updateMousePosition);
-		
-	// 	return () => {
-	// 			window.removeEventListener('mousemove', updateMousePosition);
-	// 	};
-	// }, []);	
 	
 	const loginLink = {
 		icon: faArrowRight,

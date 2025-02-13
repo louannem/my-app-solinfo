@@ -23,7 +23,7 @@ export default function UsersList() {
 			{
 				users.map((user) => {
 					return ( 
-						<li key={`user-${user._id}`}>
+						<li key={`user-${user.id}`}>
 							<UserCard user={user} />
 						</li>
 					)

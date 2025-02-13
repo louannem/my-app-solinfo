@@ -23,12 +23,6 @@
     margin: 10px 0 20px;
 }
 
-.home_userList a, .home_userList h3:hover {
-    color: white;
-    position: inherit;
-    /* width: 80px; */
-    z-index: 1;
-}
 
 .home_userList a {
     width: 80px;

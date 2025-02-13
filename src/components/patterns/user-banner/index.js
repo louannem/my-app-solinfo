@@ -14,8 +14,8 @@ export default function UserBanner({ isActiveUser = false, user = {} }) {
 		<div>
 			<div className={style.userPageHeader}>
 				<div className={style.userPageInfos}>
-					<h1>{`${user.firstname}   ${user.lastname}`}</h1>
-					<span>@{user._id}</span>
+					<h1>{user.name}</h1>
+					<span>@{user.id}</span>
 				</div>
 			</div>
 			<div className={style.userPageData}>

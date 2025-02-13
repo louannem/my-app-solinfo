@@ -14,15 +14,16 @@ export default function UserProvider({children, data}){
 	const user = JSON.parse(data.value);
 
 	useEffect(() => {
-			if(user && user._id) {
+			if(user && user.id) {
 				dispatch(setAuthState(true));
 				dispatch(
 					setUserState({
-							id: user._id,
-							lastname: user.lastname,
-							firstname: user.firstname,
-							email: user.email,
-							description: user.description ?? ''
+						id: user.id.toString(),
+						lastname: user.lastname,
+						firstname: user.firstname,
+						name: user.name,
+						email: user.email,
+						description: user.description ?? ''
 					})
 				);
 			}
@@ -30,7 +31,7 @@ export default function UserProvider({children, data}){
 
 	return (
 		<UserContext.Provider value={JSON.parse(data.value)}>
-		{children}
+			{children}
 		</UserContext.Provider>
 	)
 }

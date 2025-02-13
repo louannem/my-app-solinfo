@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function User() {
     return (
-			<main className={style.userPage}>
-				<UserPage />
-			</main>
+		<main className={style.userPage}>
+			<UserPage />
+		</main>
 	)
 }

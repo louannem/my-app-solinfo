@@ -1,12 +1,15 @@
 .cardWrapper {
+    align-items: center;
+    display: flex;
     background-color: white;
     border-radius: 100px;  
     background-clip: padding-box; /* !importanté */
     border: solid 2px transparent;
     box-shadow: 0px 1.5px 3px rgb(231, 231, 231);
+    box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    box-sizing: border-box;
+    justify-content: center;
     height: 80px;
     padding: 16px;
     position: relative;
@@ -19,7 +22,6 @@
     top: 0; right: 0; bottom: 0; left: 0;
     margin: -2px; 
     border-radius: inherit;
-    background: var(--primary-color);
     z-index: -1;
 }
 
@@ -41,18 +43,3 @@
     text-align: center;
 }
 
-.cardWrapper:hover h3 {
-    color: white;
-    transition: 0.2s;
-}
-
-.cardWrapper a {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.cardWrapper a:hover {
-    color: white;
-    transition: 0.2s;
-}
